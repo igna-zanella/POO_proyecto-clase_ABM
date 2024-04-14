@@ -1,2 +1,2 @@
 # POO_proyecto-clase_ABM
-POO Proyecto realizado en claso
+POO Proyecto realizado en clase.
