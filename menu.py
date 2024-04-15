@@ -1,6 +1,13 @@
 
 from datos import Dato
 
+class Col:
+    negro = '\033[30m'
+    rojo = '\033[31m'
+    verde = '\033[32m'
+    amarillo = '\033[33m'
+    blanco = '\033[37m'
+    finColor = '\033[39m'
 class Menu():
 
     def menu(self):
@@ -9,7 +16,7 @@ class Menu():
 
         while True:
 
-            print('\033[92m' + """
+            print(Col.verde + """
         ╔═════════════════════════════════════════╗
         ║                                         ║
         ║           REGISTRO DE USUARIOS          ║
@@ -24,21 +31,21 @@ class Menu():
         ║    INGRESE '0' PARA SALIR               ║
         ║                                         ║
         ╚═════════════════════════════════════════╝    
-            """ + '\033[0m')
+            """ + Col.finColor)
             opcion = input("Ingrese su opción: ")
 
             if opcion == "1":
                 ingreso.agregar()
-                print('\033[92m' + "agregado 👌" + '\033[0m')
+                print(Col.verde + "agregado 👌" + Col.finColor)
             elif opcion == "2":
                 ingreso.listar()
-                print('\033[92m' + "mostrado ✨" + '\033[0m')
+                print(Col.verde + "mostrado ✨" + Col.finColor)
             elif opcion == "3":
                 ingreso.buscar()
-                print('\033[92m' + "encontrado 😎" + '\033[0m')
+                print(Col.verde + "encontrado 😎" + Col.finColor)
             elif opcion == "4":
                 while True:
-                    print('\033[92m' + """
+                    print(Col.verde + """
         ╔═════════════════════════════════════════╗
         ║                                         ║
         ║                 EDITAR                  ║
@@ -48,7 +55,7 @@ class Menu():
         ║   3) Volver                             ║
         ║                                         ║
         ╚═════════════════════════════════════════╝ 
-                        """ + '\033[0m')
+                        """ + Col.finColor)
                     opcionEditar = input("Elija la opción a editar: ")
                     if opcionEditar == "1":
                         ingreso.editarNombre()
@@ -59,22 +66,22 @@ class Menu():
                     elif opcionEditar == "3":
                         break
                     else:
-                        print('\033[31m' + opcionEditar + " no es una opción válida " + '\033[0m' + "😦")
+                        print(Col.rojo + opcionEditar + " no es una opción válida " + Col.finColor + "😦")
                 if opcionEditar == "1" or opcionEditar == "2":    
-                    print('\033[92m' + "editado ✔" + '\033[0m')
+                    print(Col.verde + "editado ✔" + Col.finColor)
                 else:
-                    print("Ha vuelto al menú principal")
+                    print(Col.amarillo + "Ha vuelto al menú principal ⬅" + Col.finColor)
             elif opcion == "5":
                 ingreso.buscarHistorial()
-                print('\033[92m' + "Historial 📁" + '\033[0m')
+                print(Col.verde + "Historial 📁" + Col.finColor)
             elif opcion == "6":
                 ingreso.eliminar()
-                print('\033[92m' + "eliminado 😢" + '\033[0m')
+                print(Col.verde + "eliminado ❌" + Col.finColor)
             elif opcion == "0":
-                print('\033[92m' + "Gracias por su visita 😉" +'\033[0m')
+                print(Col.verde + "Gracias por su visita 😉" +'\033[0m')
                 exit()
             else:
-                print('\033[31m' + opcion + " no es una opción válida " + '\033[0m' + "😦")
+                print(Col.rojo + opcion + " no es una opción válida " + Col.finColor + "😦")
 
 menu_01 = Menu()
 
