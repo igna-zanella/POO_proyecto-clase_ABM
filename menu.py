@@ -12,7 +12,6 @@ class Menu():
 
     def menu(self):
         ingreso = Dato()
-        
 
         while True:
 
