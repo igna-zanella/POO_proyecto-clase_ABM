@@ -23,11 +23,6 @@ class Persona():
         self.retiro += retiro
         self.saldo += deposito - retiro
     
-    # def editarSaldo(self, deposito, retiro):
-    #     self.deposito += deposito
-    #     self.retiro += retiro
-    #     self.saldo += deposito - retiro
-    
     def editarNombre(self, nombre, apellido):
         self.nombre = nombre
         self.apellido = apellido
