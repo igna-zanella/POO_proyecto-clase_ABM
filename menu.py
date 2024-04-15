@@ -1,4 +1,20 @@
 
+# alt 185 ╣
+# alt 186 ║
+# alt 187 ╗
+# alt 188 ╝
+# alt 200 ╚
+# alt 201 ╔
+# alt 202 ╩
+# alt 203 ╦
+# alt 204 ╠
+# alt 205 ═
+# alt 206 ╬
+#
+# alt 219 █
+# alt 220 ▄
+# alt 223 ▀
+
 from datos import Dato
 
 class Col:
@@ -16,20 +32,19 @@ class Menu():
         while True:
 
             print(Col.verde + """
-        ╔═════════════════════════════════════════╗
-        ║                                         ║
-        ║           REGISTRO DE USUARIOS          ║
-        ║                                         ║
-        ║    1) Agregar                           ║
-        ║    2) Mostrar                           ║
-        ║    3) Buscar                            ║
-        ║    4) Editar                            ║
-        ║    5) Historial                         ║
-        ║    6) Eliminar                          ║
-        ║                                         ║
-        ║    INGRESE '0' PARA SALIR               ║
-        ║                                         ║
-        ╚═════════════════════════════════════════╝    
+        █▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀█
+        █           REGISTRO DE USUARIOS          █
+        █                                         █
+        █    1) Agregar                           █
+        █    2) Mostrar                           █
+        █    3) Buscar                            █
+        █    4) Editar                            █
+        █    5) Historial                         █
+        █    6) Eliminar                          █
+        █                                         █
+        █    INGRESE '0' PARA SALIR               █
+        █                                         █
+        ▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀
             """ + Col.finColor)
             opcion = input("Ingrese su opción: ")
 
@@ -45,15 +60,15 @@ class Menu():
             elif opcion == "4":
                 while True:
                     print(Col.verde + """
-        ╔═════════════════════════════════════════╗
-        ║                                         ║
-        ║                 EDITAR                  ║
-        ║                                         ║                               
-        ║   1) Datos personales                   ║
-        ║   2) Saldo                              ║
-        ║   3) Volver                             ║
-        ║                                         ║
-        ╚═════════════════════════════════════════╝ 
+        █▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀█
+        █                                         █
+        █                 EDITAR                  █
+        █                                         █                               
+        █   1) Datos personales                   █
+        █   2) Saldo                              █
+        █   3) Volver                             █
+        █                                         █
+        ▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀
                         """ + Col.finColor)
                     opcionEditar = input("Elija la opción a editar: ")
                     if opcionEditar == "1":

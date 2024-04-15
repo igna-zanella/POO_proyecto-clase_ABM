@@ -98,7 +98,6 @@ class Dato():
                     except ValueError:
                         print(Col.rojo + "El valor debe ser numérico." + Col.finColor)
                 # retiro = float(input(Col.amarillo + "Retiro: " + Col.finColor))
-                #probar validación de los float con while True Try/except
                 objeto.editarSaldo(deposito, retiro)
                 objeto.imprimir()
                 modificado = objeto.modificaciones(deposito,retiro)
@@ -128,7 +127,7 @@ class Dato():
                     print(f'{mensaje}')
             else:
                 print(Col.rojo + "DNI no encontrado ⛔" + Col.finColor)
-                    #puede incluir la fecha de cada movimiento. "Historial" arriba del for.
+                #puede incluir la fecha de cada movimiento. "Historial" arriba del for.
 
     def eliminar(self):
         print(Col.verde + "ELIMINAR USUARIO" + Col.finColor)
