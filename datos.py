@@ -75,8 +75,8 @@ class Dato():
         for objeto in listaUsuario:
             if dni == objeto.dni:
                 objeto.imprimir()
-            else:
-                print(Col.rojo + "DNI no encontrado ⛔" + Col.finColor)
+            # else:
+            #     print(Col.rojo + "DNI no encontrado ⛔" + Col.finColor)
             #probar con else para dni no encontrado.
 
     def editarSaldo(self):
@@ -102,8 +102,8 @@ class Dato():
                 objeto.imprimir()
                 modificado = objeto.modificaciones(deposito,retiro)
                 objeto.historial.append(modificado)
-            else:
-                print(Col.rojo + "DNI no encontrado ⛔" + Col.finColor)
+            # else:
+            #     print(Col.rojo + "DNI no encontrado ⛔" + Col.finColor)
 
     def editarNombre(self):
         print(Col.verde + "EDITAR NOMBRE" + Col.finColor)
@@ -114,8 +114,8 @@ class Dato():
                 apellido = input(Col.amarillo + "Nuevo apellido: " + Col.finColor)
                 objeto.editarNombre(nombre, apellido)
                 objeto.imprimir()
-            else:
-                print(Col.rojo + "DNI no encontrado ⛔" + Col.finColor)
+            # else:
+            #     print(Col.rojo + "DNI no encontrado ⛔" + Col.finColor)
 
     def buscarHistorial(self):
         print(Col.verde + "HISTORIAL DE USUARIO" + Col.finColor)
@@ -125,8 +125,8 @@ class Dato():
                 print("HISTORIAL:")
                 for mensaje in objeto.historial:
                     print(f'{mensaje}')
-            else:
-                print(Col.rojo + "DNI no encontrado ⛔" + Col.finColor)
+            # else:
+            #     print(Col.rojo + "DNI no encontrado ⛔" + Col.finColor)
                 #puede incluir la fecha de cada movimiento. "Historial" arriba del for.
 
     def eliminar(self):
@@ -135,7 +135,7 @@ class Dato():
         for objeto in listaUsuario:
             if dni == objeto.dni:
                 listaUsuario.remove(objeto)
-            else:
-                print(Col.rojo + "DNI no encontrado ⛔" + Col.finColor)
+            # else:
+            #     print(Col.rojo + "DNI no encontrado ⛔" + Col.finColor)
     
     
