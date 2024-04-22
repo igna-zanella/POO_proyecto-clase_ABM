@@ -1,0 +1,53 @@
+universo de discurso
+el planteo de la base de datos
+
+diagrama de entidad relación
+de diseño
+y el codigo
+
+xampp 8.0 no descargar pq lo descarga en html
+hay q descargar en sql
+
+sql workbench
+
+pasar el codigo prolijo
+
+—--
+con alter se puede alterar la estructura de la tabla (agregar, table, cambiar tipo de datos, etc)
+update solo trabajo con los datos, nunca con la estructura de la tabla
+campo int(11) hasta 11 caracteres
+
+en mySQL Workbench:
+
+create table direccion(id int not null, *** se relaciona con el id, no con el nro de la calle
+			calle varchar(32),
+			numero int not null,
+			codigoP int not null);
+
+alter table direccion add primary key (id);
+
+create table usuario(
+                                   dni int(8) not null primary key,
+			nombre varchar (20) not null,
+apellido varchar (20) not null
+direccion int,
+foreign key(direccion) references direccion(id));
+
+*alter table usuario add foreign key(direccion) references direccion(id)
+
+para importar una bdd se crea una nueva tabla y se va a la pestaña importar
+
+create table direccion(id int not null,
+			calle varchar(32),
+			numero int not null,
+			codigoP int not null);
+
+alter table direccion add primary key (id);
+
+create table usuario(dni int(8) not null primary key,
+			nombre varchar (20) not null,
+            apellido varchar (20) not null,
+            direccion int,
+foreign key(direccion) references direccion(id));
+
+alter table usuario add foreign key(direccion) references direccion(id)

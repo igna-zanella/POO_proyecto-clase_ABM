@@ -69,14 +69,14 @@ class Dato():
     def listar(self):
         print(Col.verde + "LISTA DE USUARIOS" + Col.finColor)
         for objeto in listaUsuario:
-            print(objeto.imprimir())
+            objeto.imprimir()
 
     def buscar(self):
         print(Col.verde + "BÚSQUEDA POR DNI" + Col.finColor)
         dni = input("Ingrese el DNI: ")
         for objeto in listaUsuario:
             if dni == objeto.dni:
-                print(objeto.imprimir())
+                objeto.imprimir()
             # else:
             #     print(Col.rojo + "DNI no encontrado ⛔" + Col.finColor)
             #probar con else para dni no encontrado.
@@ -101,7 +101,7 @@ class Dato():
                         print(Col.rojo + "El valor debe ser numérico." + Col.finColor)
                 # retiro = float(input(Col.amarillo + "Retiro: " + Col.finColor))
                 objeto.editarSaldo(deposito, retiro)
-                print(objeto.imprimir())
+                objeto.imprimir()
                 modificado = objeto.modificaciones(deposito,retiro)
                 objeto.historial.append(modificado)
             # else:
@@ -129,7 +129,7 @@ class Dato():
                     print(f'{mensaje}')
             # else:
             #     print(Col.rojo + "DNI no encontrado ⛔" + Col.finColor)
-                #puede incluir la fecha de cada movimiento. "Historial" arriba del for.
+            #puede incluir la fecha de cada movimiento. "Historial" arriba del for.
 
     def eliminar(self):
         print(Col.verde + "ELIMINAR USUARIO" + Col.finColor)
@@ -139,5 +139,7 @@ class Dato():
                 listaUsuario.remove(objeto)
             # else:
             #     print(Col.rojo + "DNI no encontrado ⛔" + Col.finColor)
+
+#la unica dif entre funciones y metodos, es que metodos se agrega la palabra self entre parentesis
     
-    #la unica dif entre funciones y metodos, es que metodos se agrega la palabra self entre parentesis
+    

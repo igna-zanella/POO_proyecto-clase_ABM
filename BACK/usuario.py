@@ -10,13 +10,13 @@ class Persona():
         self.historial = []
 
     def imprimir(self):
-        return f'''
+        print(f'''
             DATOS DEL USUARIO
             Nombre: {self.nombre}
             Apellido: {self.apellido}
             Depósito: {self.deposito}
             Retiro: {self.retiro}
-            Saldo: {self.saldo}'''
+            Saldo: {self.saldo}''')
     
     def editarSaldo(self, deposito, retiro):
         self.deposito += deposito
