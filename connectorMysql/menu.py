@@ -15,7 +15,8 @@ class Principal():
                             █                                         █
                             █    1) Listar                            █
                             █    2) Agregar                           █
-                            █    3) Eliminar                          █
+                            █    3) Modificar                         █
+                            █    4) Eliminar                          █
                             █                                         █
                             █    INGRESE '0' PARA SALIR               █
                             █                                         █
@@ -46,6 +47,12 @@ class Principal():
             registro = ingreso.agregar()
             try:
                 conector.registro(registro)
+            except:
+                print('Ocurrió un error en agregar')
+        if op == 3:
+            modificacion = ingreso.modificar()
+            try:
+                conector.actualizar(modificacion)
             except:
                 print('Ocurrió un error en agregar')
 

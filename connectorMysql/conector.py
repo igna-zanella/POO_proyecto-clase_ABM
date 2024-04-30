@@ -20,7 +20,7 @@ class Conector():
             try:
                 cur = self.conexion.cursor()
                 #cur.execute('select * from usuario')
-                cur.execute('select usuario.nombre, usuario.apellido, direccion.calle, direccion.numero, direccion.codigoP from usuario, direccion where usuario.direccion = direccion.id')
+                cur.execute('select usuario.nombre, usuario.apellido, usuario.dni, direccion.calle, direccion.numero, direccion.codigoP from usuario, direccion where usuario.direccion = direccion.id')
                 respuesta = cur.fetchall()
                 return respuesta
             except Error as res:
@@ -37,6 +37,20 @@ class Conector():
                 cur.execute(sql.format(usuario[0], usuario[1], usuario[2], usuario[3]))
                 self.conexion.commit()
                 print('Agregado')
+            except Error as res:
+                print(f'No se pudo agregar al registro: {res}')
+                
+    def actualizar(self, usuario):
+        if self.conexion.is_connected():
+            try:
+                cur = self.conexion.cursor()
+                sql = (''' update usuario set
+                        (nombre, apellido)
+                        value ('{1}', '{2}')
+                    ''')
+                cur.execute(sql.format(usuario[1], usuario[2]))
+                self.conexion.commit()
+                print('Actualizado')
             except Error as res:
                 print(f'No se pudo agregar al registro: {res}')
 

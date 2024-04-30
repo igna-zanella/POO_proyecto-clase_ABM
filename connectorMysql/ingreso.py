@@ -10,8 +10,8 @@ class Col:
 class Ingreso:
     def listarU(self, usuario):
         for usu in usuario:
-            data = 'Nombre: {0} \nApellido: {1}\n'
-            print(data.format(usu[0], usu[1]))
+            data = 'Nombre: {0} \nApellido: {1}\nDNI: {2}\n'
+            print(data.format(usu[0], usu[1], usu[2]))
 
     def agregar(self):
         print(Col.verde + "INGRESE SUS DATOS" + Col.finColor)
@@ -55,4 +55,35 @@ class Ingreso:
                 print(Col.rojo + "El valor debe ser numérico." + Col.finColor)
 
         usuario = (dni, nombre, apellido, direccion)
+        return usuario
+    
+    def modificar(self):
+        print(Col.verde + "EDITAR USUARIO" + Col.finColor)
+        dni = input("Ingrese el DNI: ")
+        for usu in usuario[3]:
+            if dni == usu:
+                print(Col.verde + "INGRESE SUS DATOS" + Col.finColor)
+
+                nombreC = False
+                while not nombreC:                
+                    nombre = input(Col.amarillo + "Nombre: " + Col.finColor).capitalize()
+                    if nombre.isalpha():
+                        if len(nombre) <= 18 and len(nombre)>=3:
+                            nombreC = True
+                        else:
+                            print("El nombre debe ser entre 3 y 18 letras.")
+                    else:    
+                        print("Solo se aceptan letras. Vuelva a intentarlo.")
+
+                while True:                
+                    apellido = input(Col.amarillo + "Apellido: " + Col.finColor).capitalize()
+                    if apellido.isalpha():
+                        if len(apellido) <= 18 and len(apellido)>=3:
+                            break
+                        else:
+                            print("El nombre debe ser entre 3 y 18 letras.")
+                    else:    
+                        print("Solo se aceptan letras. Vuelva a intentarlo.")
+
+        usuario = (dni, nombre, apellido)
         return usuario
