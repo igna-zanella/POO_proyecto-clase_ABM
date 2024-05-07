@@ -50,11 +50,32 @@ class Principal():
             except:
                 print('Ocurrió un error en agregar')
         if op == 3:
-            modificacion = ingreso.modificar()
             try:
-                conector.actualizar(modificacion)
+                usuario = conector.listar()
+                if len(usuario) > 0:
+                    usuarioA = ingreso.actualizar(usuario)
+                    print(usuarioA)
+                    if usuarioA:
+                        conector.actualizar(usuarioA)
+                    else:
+                        print("Usuario no encontrado")
+                else:
+                    print("Base de Datos vacía")
             except:
                 print('Ocurrió un error en agregar')
+        if op == 4:
+            try:
+                usuario = conector.listar()
+                if len(usuario) > 0:
+                    usuarioE = ingreso.eliminar(usuario)
+                    if not (usuarioE == ""):
+                        conector.eliminar(usuarioE)
+                    else:
+                        print('Usuario no encontrado')
+                else:
+                    print('Base de Datos vacía')
+            except:
+                print('Ocurrió un error en eliminar')
 
 principal = Principal()
 principal.menu()
