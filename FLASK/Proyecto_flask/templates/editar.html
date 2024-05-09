@@ -1,4 +1,13 @@
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style2.css">
+    <title>Editar</title>
+</head>
+<style>
+    
 @import url(https://fonts.googleapis.com/css?family=Nova+Square);
 
 body {
@@ -12,41 +21,6 @@ h1 {
     text-shadow: 2px 2px 8px #000;
 }
 
-.tabla {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-table, th, td {
-    border: 2px solid rgb(19, 2, 65);
-    border-collapse: collapse;
-    padding: .85rem;
-    margin: 50px;
-    text-align: center;
-    background-color: rgb(219, 218, 217);
-}
-
-th {
-    background-color: rgb(196, 193, 193);
-}
-
-td a {
-    text-decoration: none;
-}
-
-#boton-alta{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 1rem;
-    font-weight: 600;
-}
-
-#boton-alta a {
-    text-decoration: none;
-}
-
 .btn{
     background-color: #0e8be4;
     color: white;
@@ -55,6 +29,9 @@ td a {
     border: 2px solid rgb(19, 2, 65);
 }
 
+.btn a {
+    text-decoration: none;
+}
 
 .btn:hover {
     transform: scale(1.02);
@@ -72,13 +49,13 @@ form{
     align-items: center;
 }
 
-input, #opciones {
+input {
     width: 90%;
     height: 1.825rem;
     font-size: .8em;
 }
 
-.input, #opciones {
+.input {
     background-color: rgb(219, 218, 217);
     padding-left: 20px;
     border: none;
@@ -88,23 +65,10 @@ input, #opciones {
     box-sizing: border-box;
 }
 
-#opciones {
-    padding-top: .5rem;
-    color:rgb(88, 90, 90);
-}
-
 .input:hover, .sel:hover {
     border: 2px solid #000000;
     font-size: .6rem;
     letter-spacing: .3rem;
-}
-
-#opciones {
-    margin-bottom: .8rem;
-    padding: .5rem;
-    border: none;
-    outline: none;
-    letter-spacing: 1px;
 }
 
 #btn-agregar{
@@ -119,13 +83,11 @@ input, #opciones {
     border: 2px solid rgb(19, 2, 65);
 }
 
-
 #btn-agregar:hover {
     transform: scale(1.02);
     cursor: pointer;
     background-color: #0a6db4;
 }
-
 
 .boton-volver{
     display: flex;
@@ -139,3 +101,22 @@ input, #opciones {
     text-decoration: none;
 }
 
+
+</style>
+<body>
+
+    <h1>ACTUALIZACIÓN DE DATOS</h1>
+
+    <form action="/actualizar/{{usuario.0}}" method="POST">
+        <input class="input" type="text" id="dni" name="dni" value="{{usuario.0}}" placeholder="DNI" maxlength="8" required readonly><br><br>
+        <input class="input" type="text" id="nombre" name="nombre" value="{{usuario.1}}" placeholder="Nombre" maxlength="20" required><br><br>
+        <input class="input" type="text" id="apellido" name="apellido" value="{{usuario.2}}" placeholder="Apellido" maxlength="20" required><br><br>
+        <input class="input" type="text" id="direccion" name="direccion" value="{{usuario.3}}" placeholder="Dirección" maxlength="5" required><br><br>
+        <input class="input" type="text" id="educacion" name="educacion" value="{{usuario.4}}" placeholder="Educación" maxlength="5" required><br><br>
+        <input id="btn-agregar" type="submit" value="Actualizar">
+    </form>
+    <div class="boton-volver">
+        <a class="btn" href="/">Volver</a>
+    </div>
+</body>
+</html>

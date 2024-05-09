@@ -9,6 +9,8 @@
 </head>
 
 <body>
+
+    <h1>ALTA DE USUARIOS</h1>
     <form action="" method="POST">
         <!-- faltaría agregar la ruta en action "/agregar" -->
         <input class="input" type="text" id="dni" name="dni" placeholder="DNI" maxlength="8" required><br><br>
@@ -21,14 +23,14 @@
 
             {% for di in direccion %}
             
-            <option value="{{di.0}}">{{di.0}} {{di.1}}</option>
+            <option value="{{di.0}}">{{di.0}}{{") "}} {{di.1}} {{di.2}}</option>
             
             {% endfor %}
         </select> <br>
         <input class="input" type="text" id="educacion" name="educacion" placeholder="Educación" maxlength="5" required><br><br>
         <input id="btn-agregar" type="submit" value="Agregar">
     </form>
-    <div id="boton-volver">
+    <div class="boton-volver">
         <a class="btn" href="/">Volver</a>
     </div>
 </body>

@@ -35,5 +35,35 @@ def agregar():
         cur.connection.commit()
         return  redirect(url_for('listar'))
 
+@app.route('/eliminar/<string:dni>')
+def eliminar(dni):
+        cur = mysql.connection.cursor()
+        cur.execute('delete from usuario where dni = {0}'.format(dni))
+        cur.connection.commit()
+        return redirect(url_for('listar'))
+
+@app.route('/obtener/<id>')
+def obtener(id):
+        cur = mysql.connection.cursor()
+        cur.execute('select * from usuario where dni = %s' % (id))
+        usuario = cur.fetchall()
+        return render_template('editar.html', usuario = usuario[0])
+
+@app.route('/actualizar/<dni>', methods=['POST'])
+def actualizar(dni):
+    if request.method == 'POST':
+        nombre = request.form['nombre']
+        apellido = request.form['apellido']
+        direccion = request.form['direccion']
+        educacion = request.form['educacion']
+        
+        cur = mysql.connection.cursor()
+        cur.execute('''UPDATE usuario set nombre = %s, 
+                    apellido = %s, 
+                    direccion = %s, 
+                    educacion = %s where dni = %s''', (nombre, apellido, direccion, educacion, dni))
+        cur.connection.commit()
+        return  redirect(url_for('listar'))
+
 if __name__ == '__main__':
     app.run(port=3000,debug=True)
