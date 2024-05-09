@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./static/style.css">
+    <title>Lista de Usuarios</title>
+</head>
+<body>
+
+    <div class="tabla">
+    <table>
+        <thead>
+            <tr>
+                <th>DNI</th>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Dirección</th>
+                <th>Educación</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for da in datos %}
+            <tr>
+            <td>{{da.0}}</td>
+            <td>{{da.1}}</td>
+            <td>{{da.2}}</td>
+            <td>{{da.3}}</td>
+            <td>{{da.4}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    </div>
+    <div id="boton-alta">
+        <a class="btn" href="/agregar">Alta Usuario</a>
+    </div>
+
+</body>
+</html>
