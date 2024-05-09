@@ -19,7 +19,10 @@ def listar():
 @app.route('/agregar', methods=['POST','GET'])
 def agregar():
     if request.method == 'GET':
-        return render_template('agregar.html')
+        cur = mysql.connection.cursor()
+        cur.execute('select * from direccion')
+        datos = cur.fetchall()
+        return render_template('agregar.html', direccion= datos)
     elif request.method == 'POST':
         dni = request.form['dni']
         nombre = request.form['nombre']
