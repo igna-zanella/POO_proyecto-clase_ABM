@@ -45,9 +45,10 @@ def eliminar(dni):
 @app.route('/obtener/<id>')
 def obtener(id):
         cur = mysql.connection.cursor()
-        cur.execute('select * from usuario where dni = %s' % (id))
+        # cur.execute('select * from usuario where dni = %s' % (id))
+        cur.execute('select usuario.dni, usuario.nombre, usuario.apellido, usuario.direccion, usuario.educacion, direccion.id, direccion.calle, direccion.numero, direccion.codigoP from usuario, direccion where dni = %s' % (id))
         usuario = cur.fetchall()
-        return render_template('editar.html', usuario = usuario[0])
+        return render_template('editar.html', usuario = usuario[0], dire = usuario)
 
 @app.route('/actualizar/<dni>', methods=['POST'])
 def actualizar(dni):

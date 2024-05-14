@@ -4,41 +4,61 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./static/style.css">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css')}}">
     <title>Lista de Usuarios</title>
 </head>
 <body>
-
-    <div class="tabla">
+    {% block content %}
+    <section>
+    <div class="tabla" style="overflow-x:auto; overflow-y:auto;">
     <table>
         <thead>
             <tr>
                 <th>DNI</th>
-                <th>Nombre</th>
-                <th>Apellido</th>
-                <th>Dirección</th>
-                <th>Educación</th>
-                <th colspan="2">Opciones</th>
+                <th>NOMBRE</th>
+                <th>APELLIDO</th>
+                <th>DIRECCIÓN</th>
+                <th>EDUCACIÓN</th>
+                <th colspan="2">OPCIONES</th>
             </tr>
         </thead>
         <tbody>
             {% for da in datos %}
             <tr>
-            <td>{{da.0}}</td>
-            <td>{{da.1}}</td>
-            <td>{{da.2}}</td>
-            <td>{{da.3}}</td>
-            <td>{{da.4}}</td>
-            <td><a href="/obtener/{{da.0}}">Editar</a></td>
-            <td><a href="/eliminar/{{da.0}}">Eliminar ❌</a></td>
-            </tr>
+
+            <td title="DNI">{{da.0}}</td>
+            <td title="Nombre">{{da.1}}</td>
+            <td title="Apellido">{{da.2}}</td>
+            <td title="Dirección">{{da.3}}</td>
+            <td title="Educación">{{da.4}}</td>
+            <td><a class="btn-editar" href="/obtener/{{da.0}}">EDITAR</a></td>
+
+            <!-- <td><a href="/eliminar/{{da.0}}">Eliminar ❌</a></td> -->
+            <!-- <td><button class="btn-eliminar" onclick="myFunction('{{da.0}}')" title="¡No se puede deshacer!">ELIMINAR</button></td> -->
+            <td><input type="submit" class="btn-eliminar" onclick="eliminar('{{da.0}}')" title="¡No se puede deshacer!" id="{{da.0}}" value="ELIMINAR"></td>
+        </tr>
+        <script>
+            function eliminar(dni) {
+                let text = "¿Desea eliminar al usuario de forma permanente?";
+                if (confirm(text) == true) {
+                    console.log(dni)
+                    window.location.href ="/eliminar/"+dni; 
+                } else {
+                    text = "";
+                }
+            }
+        </script>
             {% endfor %}
         </tbody>
     </table>
+    
     </div>
-    <div id="boton-alta">
-        <a class="btn" href="/agregar">Alta Usuario</a>
+    <div class="boton-alta">
+        <a class="btn" href="/agregar">ALTA USUARIO</a>
     </div>
+
+</section>
+    {% endblock %}
 
 </body>
 </html>

@@ -6,6 +6,10 @@ body {
     font-family: 'Noto Sans', sans-serif;
 }
 
+section {
+    margin-bottom: 6rem;
+}
+
 h1 {
     padding: 1rem;
     color: #fff;
@@ -19,23 +23,45 @@ h1 {
 }
 
 table, th, td {
-    border: 2px solid rgb(19, 2, 65);
+    color: #fff;
+    background-color: rgb(36, 36, 37);
+    border: .05rem solid rgb(53, 52, 54);
     border-collapse: collapse;
-    padding: .85rem;
+    padding: .60rem;
     margin: 50px;
     text-align: center;
-    background-color: rgb(219, 218, 217);
+    /* background-color: rgb(219, 218, 217); */
+    /* background-color: rgb(236, 227, 216); */
+    overflow-x:auto;
+}
+
+table {
+    border: 5px solid rgb(53, 52, 54);
+    box-shadow: 3px 3px 8px black;
+    overflow-x:auto;
 }
 
 th {
-    background-color: rgb(196, 193, 193);
+    background-color: rgb(143, 141, 141);
+    border: 2px solid rgb(53, 52, 54);
+}
+
+tr{
+    border: 2px solid rgb(53, 52, 54);
+}
+table tr:nth-child(odd) {
+    background-color: #eee;
+}
+
+td{
+    border: none;
 }
 
 td a {
     text-decoration: none;
 }
 
-#boton-alta{
+.boton-alta {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -43,16 +69,19 @@ td a {
     font-weight: 600;
 }
 
-#boton-alta a {
+.boton-alta a {
     text-decoration: none;
 }
 
-.btn{
+.btn {
     background-color: #0e8be4;
     color: white;
-    padding: 15px;
+    padding: .7rem;
     border-radius: 8px;
     border: 2px solid rgb(19, 2, 65);
+    font-size: .9rem;
+    font-weight: 800;
+    box-shadow: 3px 3px 8px black;
 }
 
 
@@ -62,23 +91,67 @@ td a {
     background-color: #0a6db4;
 }
 
-form{
-    margin: 50px;
+.btn-eliminar, .btn-editar {
+    color: white;
+    padding: .4rem;
+    border-radius: 5px;
+    border: 2px solid rgb(0, 0, 0);
+    font-size: .7rem;
+    font-weight: 600;
+    box-shadow: 3px 3px 8px black;
+    transition: all .4s ease-in;
+}
+
+.btn-eliminar:hover, .btn-editar:hover {
+    /* transform: scale(1.02); */
+    cursor: pointer;
+}
+
+.btn-editar {
+    background-color: #2fa700;
+}
+
+.btn-editar:hover {
+    background-color: #377712;
+}
+
+.btn-eliminar {
+    background-color: #ff0000;
+}
+
+.btn-eliminar:hover {
+    background-color: #b41b1b;
+}
+
+form {
+    background-color: #3c5b72;
+    margin: 5px;
+    padding: 60px 30px;
     height: 55%;
     width: 300px;
+    border-radius: 5px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    box-shadow: 3px 3px 8px black;
 }
 
-input, #opciones {
+::placeholder {
+    /* color:rgb(88, 90, 90); */
+    color:rgb(0, 0, 0);
+}
+
+/* input, #opciones {
     width: 90%;
     height: 1.825rem;
     font-size: .8em;
-}
+} */
 
 .input, #opciones {
+    width: 90%;
+    height: 1.825rem;
+    font-size: .8em;
     background-color: rgb(219, 218, 217);
     padding-left: 20px;
     border: none;
@@ -86,17 +159,19 @@ input, #opciones {
     font-weight: 600;
     letter-spacing: 1px;
     box-sizing: border-box;
+    transition: all .2s ease-in;
 }
 
 #opciones {
     padding-top: .5rem;
-    color:rgb(88, 90, 90);
+    /* color:rgb(88, 90, 90); */
+    color:rgb(0, 0, 0);
 }
 
 .input:hover, .sel:hover {
     border: 2px solid #000000;
-    font-size: .6rem;
-    letter-spacing: .3rem;
+    /* font-size: .6rem; */
+    letter-spacing: .15rem;
 }
 
 #opciones {
@@ -107,27 +182,26 @@ input, #opciones {
     letter-spacing: 1px;
 }
 
-#btn-agregar{
+.btn-agregar {
     display: block;
-    background-color: #0e8be4;
-    width: 30%;
+    background-color: #2fa700;
+    width: 40%;
     height: 50px;
     font-size: 1rem;
     font-weight: 600;
     color: white;
     border-radius: 8px;
-    border: 2px solid rgb(19, 2, 65);
+    border: 2px solid rgb(16, 41, 5);
 }
 
-
-#btn-agregar:hover {
+.btn-agregar:hover {
     transform: scale(1.02);
     cursor: pointer;
-    background-color: #0a6db4;
+    background-color: #377712;
 }
 
 
-.boton-volver{
+.boton-volver {
     display: flex;
     justify-content: flex-start;
     align-items: center;
@@ -138,4 +212,12 @@ input, #opciones {
 .boton-volver a {
     text-decoration: none;
 }
+
+.contenedor {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 

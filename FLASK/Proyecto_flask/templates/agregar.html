@@ -4,18 +4,18 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./static/style.css">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css')}}">
     <title>Agregar</title>
 </head>
 
 <body>
-
+<div class="contenedor">
     <h1>ALTA DE USUARIOS</h1>
     <form action="" method="POST">
         <!-- faltaría agregar la ruta en action "/agregar" -->
-        <input class="input" type="text" id="dni" name="dni" placeholder="DNI" maxlength="8" required><br><br>
-        <input class="input" type="text" id="nombre" name="nombre" placeholder="Nombre" maxlength="20" required><br><br>
-        <input class="input" type="text" id="apellido" name="apellido" placeholder="Apellido" maxlength="20" required><br><br>
+        <input class="input" type="text" name="dni" placeholder="DNI" maxlength="8" required><br><br>
+        <input class="input" type="text" name="nombre" placeholder="Nombre" maxlength="20" required><br><br>
+        <input class="input" type="text" name="apellido" placeholder="Apellido" maxlength="20" required><br><br>
         <!-- <input class="input" type="text" id="direccion" name="direccion" placeholder="Dirección" maxlength="5" required><br><br> -->
         <!-- <label class="sel">Dirección</label> -->
         <select id="opciones" name="direccion" required>
@@ -28,10 +28,11 @@
             {% endfor %}
         </select> <br>
         <input class="input" type="text" id="educacion" name="educacion" placeholder="Educación" maxlength="5" required><br><br>
-        <input id="btn-agregar" type="submit" value="Agregar">
+        <button class="btn-agregar" type="submit">AGREGAR</button>
     </form>
-    <div class="boton-volver">
-        <a class="btn" href="/">Volver</a>
-    </div>
+</div>
+<div class="boton-volver">
+    <a class="btn" href="/">VOLVER</a>
+</div>
 </body>
 </html>
