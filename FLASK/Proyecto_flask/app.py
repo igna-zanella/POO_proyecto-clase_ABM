@@ -44,11 +44,17 @@ def eliminar(dni):
 
 @app.route('/obtener/<id>')
 def obtener(id):
+        curDireccion = mysql.connection.cursor()
+        curDireccion.execute('select * from direccion')
+        # cur.execute('select usuario.dni, usuario.nombre, usuario.apellido, usuario.direccion, usuario.educacion, direccion.id, direccion.calle, direccion.numero, direccion.codigoP from usuario, direccion where dni = %s' % (id))
+        direccion = curDireccion.fetchall()
+        
         cur = mysql.connection.cursor()
-        # cur.execute('select * from usuario where dni = %s' % (id))
-        cur.execute('select usuario.dni, usuario.nombre, usuario.apellido, usuario.direccion, usuario.educacion, direccion.id, direccion.calle, direccion.numero, direccion.codigoP from usuario, direccion where dni = %s' % (id))
+        cur.execute('select * from usuario where dni = %s' % (id))
+        # cur.execute('select usuario.dni, usuario.nombre, usuario.apellido, usuario.direccion, usuario.educacion, direccion.id, direccion.calle, direccion.numero, direccion.codigoP from usuario, direccion where dni = %s' % (id))
         usuario = cur.fetchall()
-        return render_template('editar.html', usuario = usuario[0], dire = usuario)
+        
+        return render_template('editar.html', usuariohtml = usuario[0], dire = direccion)
 
 @app.route('/actualizar/<dni>', methods=['POST'])
 def actualizar(dni):
@@ -64,6 +70,11 @@ def actualizar(dni):
                     direccion = %s, 
                     educacion = %s where dni = %s''', (nombre, apellido, direccion, educacion, dni))
         cur.connection.commit()
+        
+        curDireccion = mysql.connection.cursor()
+        curDireccion.execute('''UPDATE direccion set id = %s 
+                    ''', (direccion))
+        curDireccion.connection.commit()
         return  redirect(url_for('listar'))
 
 if __name__ == '__main__':
