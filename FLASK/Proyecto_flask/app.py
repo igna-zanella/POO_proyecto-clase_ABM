@@ -22,7 +22,12 @@ def agregar():
         cur = mysql.connection.cursor()
         cur.execute('SELECT * FROM direccion')
         datos = cur.fetchall()
-        return render_template('agregar.html', direccion= datos)
+        
+        curEdu = mysql.connection.cursor()
+        curEdu.execute('SELECT * FROM educacion')
+        educacion = curEdu.fetchall()
+        
+        return render_template('agregar.html', direccion= datos, educacionHtml = educacion)
     elif request.method == 'POST':
         dni = request.form['dni']
         nombre = request.form['nombre']

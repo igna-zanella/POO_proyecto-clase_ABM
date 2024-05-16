@@ -28,7 +28,16 @@
             
             {% endfor %}
         </select> <br>
-        <input class="input" type="text" id="educacion" name="educacion" placeholder="Educación" maxlength="5" required><br><br>
+        <select id="opciones" name="educacion" required>
+            <option value="">Educación</option>
+
+            {% for ed in educacionHtml %}
+            
+            <option value="{{ed.0}}">{{ed.0}}{{") "}} {{ed.3}} {{"("}}{{ed.1}}{{")"}}</option>
+            
+            {% endfor %}
+        </select> <br>
+        <!-- <input class="input" type="text" id="educacion" name="educacion" placeholder="Educación" maxlength="5" required><br><br> -->
         <button class="btn-agregar" type="submit">AGREGAR</button>
     </form>
 </div>
