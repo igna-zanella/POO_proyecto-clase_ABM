@@ -4,6 +4,7 @@
 body {
     background-color: rgb(88, 90, 90);
     font-family: 'Noto Sans', sans-serif;
+    counter-reset: tabla;
 }
 
 section {
@@ -77,6 +78,16 @@ td a {
     text-decoration: none;
 }
 
+.orden-tabla {
+    color: #bedcf1;
+    font-weight: 800;
+}
+
+.orden-tabla::before {
+    counter-increment: tabla;
+    content: "# " counter(tabla) " ";
+}
+
 /* ----------------------------------- FIN TABLA --------------------------------- */
 
 /* ----------------------------------- FORMULARIO -------------------------------- */
@@ -101,7 +112,7 @@ form {
 
 ::placeholder {
     /* color:rgb(88, 90, 90); */
-    color:rgb(0, 0, 0);
+    color:rgb(92, 92, 92);
 }
 
 /* input, #opciones {

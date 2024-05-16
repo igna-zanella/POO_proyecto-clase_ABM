@@ -15,6 +15,7 @@
     <table>
         <thead>
             <tr>
+                <th>Nro</th>
                 <th>DNI</th>
                 <th>NOMBRE</th>
                 <th>APELLIDO</th>
@@ -25,8 +26,9 @@
         </thead>
         <tbody>
             {% for da in datos %}
+            
             <tr>
-
+            <td class="orden-tabla"></td>
             <td title="DNI">{{da.0}}</td>
             <td title="Nombre">{{da.1}}</td>
             <td title="Apellido">{{da.2}}</td>
