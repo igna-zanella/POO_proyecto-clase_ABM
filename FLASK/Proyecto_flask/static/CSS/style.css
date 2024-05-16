@@ -155,12 +155,20 @@ form {
     filter: invert(50%) sepia(1) saturate(100) hue-rotate(140deg) brightness(200%);
 }
 
+.img-edit:hover {
+    filter: invert(50%) sepia(1) saturate(100) hue-rotate(140deg) brightness(150%);
+}
+
 .img-elim {
     /* width: 32px; */
     /* height: 32px; */
     /* rojo */
     filter: invert(50%) sepia(1) saturate(100) hue-rotate(25deg) brightness(200%);
     cursor: pointer;
+}
+
+.img-elim:hover {
+    filter: invert(50%) sepia(1) saturate(100) hue-rotate(25deg) brightness(100%);
 }
 
 /* ----------------------------------- FIN ICONOS -------------------------------- */
