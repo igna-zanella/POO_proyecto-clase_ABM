@@ -14,12 +14,12 @@
     <h1>ALTA DE USUARIOS</h1>
     <form action="" method="POST">
         <!-- faltaría agregar la ruta en action "/agregar" -->
-        <input class="input" type="text" name="dni" placeholder="DNI" maxlength="8" required><br><br>
-        <input class="input" type="text" name="nombre" placeholder="Nombre" maxlength="20" required><br><br>
-        <input class="input" type="text" name="apellido" placeholder="Apellido" maxlength="20" required><br><br>
+        <input class="input font-wix" type="text" name="dni" placeholder="DNI" maxlength="8" required><br><br>
+        <input class="input font-wix" type="text" name="nombre" placeholder="Nombre" maxlength="20" required><br><br>
+        <input class="input font-wix" type="text" name="apellido" placeholder="Apellido" maxlength="20" required><br><br>
         <!-- <input class="input" type="text" id="direccion" name="direccion" placeholder="Dirección" maxlength="5" required><br><br> -->
         <!-- <label class="sel">Dirección</label> -->
-        <select id="opciones" name="direccion" required>
+        <select id="opciones" class="font-wix" name="direccion" required>
             <option value="">Dirección</option>
 
             {% for di in direccion %}
@@ -28,7 +28,7 @@
             
             {% endfor %}
         </select> <br>
-        <select id="opciones" name="educacion" required>
+        <select id="opciones" class="font-wix" name="educacion" required>
             <option value="">Educación</option>
 
             {% for ed in educacionHtml %}
