@@ -28,7 +28,10 @@
             {% for da in datos %}
             
             <tr>
-            <td class="orden-tabla"></td>
+                
+                <td class="orden-tabla"> <svg class="circ" height="10" width="10" xmlns="http://www.w3.org/2000/svg">
+                    <circle r="45" cx="50" cy="50" fill="red" />
+                  </svg> </td>
             <td title="DNI">{{da.0}}</td>
             <td title="Nombre">{{da.1}}</td>
             <td title="Apellido">{{da.2}}</td>
