@@ -39,6 +39,7 @@ h1 {
 }
 
 .seccion-alta {
+    width: 95%;
     margin: 50px auto 0 auto;
     font-weight: 600;
     display: flex;
@@ -127,8 +128,8 @@ form {
     /* background-color: #3c5b72; */
     /* background-image: linear-gradient(to right top, #334662, #3d5886, #4d6aab, #637bd0, #808bf5); */
     /* background-image: linear-gradient(to right top, #25354b, #253e65, #29477f, #364e99, #4a54b1); */
-    /* background-image: linear-gradient(to right top, #18212e, #0a2444, #00265a, #00256e, #16207f); */
-    /* background-image: linear-gradient(to right top, #1c2535, #253e65, #29477f, #364e99, #4858eb); */
+    /* background-image: linear-gradient(to right, #18212e, #0a2444, #00265a, #00256e, #16207f); */
+    /* background-image: linear-gradient(to left bottom, #1c2535, #253e65, #29477f, #364e99, #4858eb); */
     background-image: linear-gradient(to right top, #000000, #3f444b, #080808, #000000, #c9c9cd);
     margin: 5px;
     padding: 60px 40px;
@@ -244,6 +245,12 @@ label{
     transform: scale(1.05);
 }
 
+.nu span {
+    position: relative;
+    bottom: 1.65rem;
+    font-size: .85rem;
+}
+
 /* ----------------------------------- FIN ICONOS -------------------------------- */
 
 /* ----------------------------------- BOTONES ----------------------------------- */
@@ -252,7 +259,7 @@ label{
     background-color: #0e8be4;
     color: white;
     padding: .7rem;
-    border-radius: 8px;
+    border-radius: 30px;
     font-size: .9rem;
     font-weight: 800;
     box-shadow: 3px 3px 8px black;
@@ -306,7 +313,7 @@ label{
     font-size: .9rem;
     font-weight: 800;
     color: white;
-    border-radius: 8px;
+    border-radius: 30px;
     border: 2px solid rgb(16, 41, 5);
 }
 
