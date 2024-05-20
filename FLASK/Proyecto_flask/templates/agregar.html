@@ -1,48 +1,63 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="{{ url_for('static', filename='/IMG/data-server.png')}}" type="image/x-icon">
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='/CSS/style.css')}}">
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="{{ url_for('static', filename='/IMG/data-server.png')}}" type="image/x-icon" />
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='/CSS/style.css')}}" />
     <title>Agregar</title>
 </head>
 
 <body>
-<div class="contenedor">
-    <h1>ALTA DE USUARIOS</h1>
-    <form action="" method="POST">
-        <!-- faltaría agregar la ruta en action "/agregar" -->
-        <input class="input font-wix" type="text" name="dni" placeholder="DNI" maxlength="8" required><br><br>
-        <input class="input font-wix" type="text" name="nombre" placeholder="Nombre" maxlength="20" required><br><br>
-        <input class="input font-wix" type="text" name="apellido" placeholder="Apellido" maxlength="20" required><br><br>
-        <!-- <input class="input" type="text" id="direccion" name="direccion" placeholder="Dirección" maxlength="5" required><br><br> -->
-        <!-- <label class="sel">Dirección</label> -->
-        <select id="opciones" class="font-wix" name="direccion" required>
-            <option value="">Dirección</option>
+    {% block content %}
+    <div class="contenedor">
+        <h1>ALTA DE USUARIOS</h1>
+        <form action="" method="POST">
+            <!-- faltaría agregar la ruta en action "/agregar" -->
+            <input class="input font-wix" type="text" name="dni" placeholder="DNI" maxlength="8" required /><br /><br />
+            <input class="input font-wix" type="text" name="nombre" placeholder="Nombre" maxlength="20"
+                required /><br /><br />
+            <input class="input font-wix" type="text" name="apellido" placeholder="Apellido" maxlength="20"
+                required /><br /><br />
+            <!-- <input class="input" type="text" id="direccion" name="direccion" placeholder="Dirección" maxlength="5" required><br><br> -->
+            <!-- <label class="sel">Dirección</label> -->
+            <select id="opciones" name="direccion" required>
+                <option value="">Dirección</option>
 
-            {% for di in direccion %}
-            
-            <option value="{{di.0}}">{{di.0}}{{") "}} {{di.1}} {{di.2}}</option>
-            
-            {% endfor %}
-        </select> <br>
-        <select id="opciones" class="font-wix" name="educacion" required>
-            <option value="">Educación</option>
+                {% for di in direccion %}
 
-            {% for ed in educacionHtml %}
-            
-            <option value="{{ed.0}}">{{ed.0}}{{") "}} {{ed.3}} {{"("}}{{ed.1}}{{")"}}</option>
-            
-            {% endfor %}
-        </select> <br>
-        <!-- <input class="input" type="text" id="educacion" name="educacion" placeholder="Educación" maxlength="5" required><br><br> -->
-        <button class="btn-agregar" type="submit">AGREGAR</button>
-    </form>
-</div>
-<div class="boton-volver">
-    <a class="btn" href="/">VOLVER</a>
-</div>
+                <option value="{{di.0}}">{{di.0}}{{") "}} {{di.1}} {{di.2}}</option>
+
+                {% endfor %}
+            </select>
+            <br />
+            <select id="opciones" class="font-wix" name="educacion" required>
+                <option value="">Educación</option>
+
+                {% for ed in educacionHtml %}
+
+                <option value="{{ed.0}}">
+                    {{ed.0}}{{") "}} {{ed.3}} {{"("}}{{ed.1}}{{")"}}
+                </option>
+
+                {% endfor %}
+            </select>
+            <br />
+            <!-- <input class="input" type="text" id="educacion" name="educacion" placeholder="Educación" maxlength="5" required><br><br> -->
+            <button class="btn-agregar" type="submit">AGREGAR</button>
+        </form>
+    </div>
+    <div class="boton-volver">
+        <a class="btn" href="/">VOLVER</a>
+    </div>
+    <script>
+        function myFunction() {
+            alert("Hello\nHow are you?");
+        }
+    </script>
+    {% endblock %}
 </body>
+
 </html>

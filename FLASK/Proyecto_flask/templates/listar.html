@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,64 +9,74 @@
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='/CSS/style.css')}}">
     <title>Lista de Usuarios</title>
 </head>
+
 <body>
     {% block content %}
+
     <section>
-    <div class="tabla" style="overflow-x:auto; overflow-y:auto;">
-    <table>
-        <thead>
-            <tr>
-                <th>Nro</th>
-                <th>DNI</th>
-                <th>NOMBRE</th>
-                <th>APELLIDO</th>
-                <th>DIRECCIÓN</th>
-                <th>EDUCACIÓN</th>
-                <th colspan="2">OPCIONES</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for da in datos %}
-            
-            <tr>
-                
-                <td class="orden-tabla"> <svg class="circ" height="10" width="10" xmlns="http://www.w3.org/2000/svg">
-                    <circle r="45" cx="50" cy="50" fill="red" />
-                  </svg> </td>
-            <td title="DNI">{{da.0}}</td>
-            <td title="Nombre">{{da.1}}</td>
-            <td title="Apellido">{{da.2}}</td>
-            <td title="Dirección">{{da.3}}</td>
-            <td title="Educación">{{da.4}}</td>
-            <td><a href="/obtener/{{da.0}}"><img class="img-edit" src="{{ url_for('static', filename='IMG/edit-1-svgrepo-com.svg') }}" title="EDITAR"></a></td>
+        <div class="seccion-alta">
+            <h1>&nbspUSUARIOS</h1>
+            <a href="/agregar"><img class="plus" src="{{ url_for('static', filename='IMG/plus.svg') }}"
+                    title="AGREGAR USUARIO" alt="agregar usuario"></a>
+        </div>
+        <div class="tabla" style="overflow-x:auto; overflow-y:auto;">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nro</th>
+                        <th>DNI</th>
+                        <th>NOMBRE</th>
+                        <th>APELLIDO</th>
+                        <th>DIRECCIÓN</th>
+                        <th>EDUCACIÓN</th>
+                        <th colspan="2">OPCIONES</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for da in datos %}
 
-            <!-- <td><a href="/eliminar/{{da.0}}">Eliminar ❌</a></td> -->
-            <!-- <td><button class="btn-eliminar" onclick="myFunction('{{da.0}}')" title="¡No se puede deshacer!">ELIMINAR</button></td> -->
-            <!-- <td><input type="submit" class="btn-eliminar" onclick="eliminar('{{da.0}}')" title="¡No se puede deshacer!" id="{{da.0}}" value="ELIMINAR"></td> -->
-            <td><img class="img-elim" src="{{ url_for('static', filename='IMG/delete-2-svgrepo-com.svg') }}" onclick="eliminar('{{da.0}}')" title="ELIMINAR" id="{{da.0}}"></td>
-       
-        <script>
-            function eliminar(dni) {
-                let text = "¿Desea eliminar al usuario de forma permanente?";
-                if (confirm(text) == true) {
-                    console.log(dni)
-                    window.location.href ="/eliminar/"+dni; 
-                } else {
-                    text = "";
-                }
-            }
-        </script>
-            {% endfor %}
-        </tr>
-        </tbody>
-    </table>
-    
-    </div>
-    <div class="boton-alta">
-        <a class="btn" href="/agregar">NUEVO &nbspUSUARIO</a>
-    </div>
+                    <tr>
 
-</section>
+                        <td class="orden-tabla">
+                            <svg class="circ" height="10" width="10" xmlns="http://www.w3.org/2000/svg">
+                                <circle r="45" cx="50" cy="50" fill="red" />
+                            </svg>
+                        </td>
+                        <td title="DNI">{{da.0}}</td>
+                        <td title="Nombre">{{da.1}}</td>
+                        <td title="Apellido">{{da.2}}</td>
+                        <td title="Dirección">{{da.3}}</td>
+                        <td title="Educación">{{da.4}}</td>
+                        <td><a href="/obtener/{{da.0}}"><img class="img-edit"
+                                    src="{{ url_for('static', filename='IMG/edit-1-svgrepo-com.svg') }}" title="EDITAR"
+                                    alt="editar usuario"></a></td>
+
+                        <!-- <td><a href="/eliminar/{{da.0}}">Eliminar ❌</a></td> -->
+                        <!-- <td><button class="btn-eliminar" onclick="myFunction('{{da.0}}')" title="¡No se puede deshacer!">ELIMINAR</button></td> -->
+                        <!-- <td><input type="submit" class="btn-eliminar" onclick="eliminar('{{da.0}}')" title="¡No se puede deshacer!" id="{{da.0}}" value="ELIMINAR"></td> -->
+                        <td><img class="img-elim" src="{{ url_for('static', filename='IMG/delete-2-svgrepo-com.svg') }}"
+                                onclick="eliminar('{{da.0}}')" title="ELIMINAR" id="{{da.0}}" alt="eliminar usuario">
+                        </td>
+
+                        <script>
+                            function eliminar(dni) {
+                                let text = "¿Desea eliminar al usuario de forma permanente?";
+                                if (confirm(text) == true) {
+                                    console.log(dni)
+                                    window.location.href = "/eliminar/" + dni;
+                                } else {
+                                    text = "";
+                                }
+                            }
+                        </script>
+
+                        {% endfor %}
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
     {% endblock %}
 
 </body>
