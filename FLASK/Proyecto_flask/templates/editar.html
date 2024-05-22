@@ -30,11 +30,18 @@
             <!-- <input class="input type="text" name="ddireccion" value="Dirección actual {{usuariohtml.3}}" placeholder="Dirección" maxlength="5" readonly><br> -->
             <label for="direccion">Dirección</label>
             <select id="opciones" name="direccion">
-                <option value="{{usuariohtml.3}}">{{usuariohtml.3}}</option>
+
+                {% for direcc in usuDire %}
+                    {% if direcc.3 == direcc.5 %}
+
+                    <option value="{{direcc.3}}">{{direcc.6}}{{" "}}{{direcc.7}}</option>
+        
+                    {% endif %}
+                {% endfor %}
 
                 {% for usu in dire %}
 
-                <option value="{{usu.5}}">{{usu.5}}{{") "}} {{usu.6}} {{usu.7}}</option>
+                <option value="{{usu.0}}">{{usu.0}}{{") "}} {{usu.1}} {{usu.2}}</option>
 
                 {% endfor %}
             </select> <br>
@@ -42,11 +49,19 @@
             <!-- <input class="input type="text" name="eeducacion" value="Educación actual {{usuariohtml.4}}" placeholder="Educación" maxlength="5" readonly><br> -->
             <label for="educacion">Educación</label>
             <select id="opciones" name="educacion">
-                <option value="{{usuariohtml.4}}">{{usuariohtml.4}}</option>
+
+                {% for educc in usuEdu %}
+                    {% if educc.1 == educc.2 %}
+
+                    <option value="{{educc.2}}">{{educc.4}}</option>
+                    <!-- <option value="{{usuariohtml.4}}">{{usuariohtml.4}}</option> -->
+        
+                    {% endif %}
+                {% endfor %}
 
                 {% for educ in edu %}
 
-                <option value="{{educ.0}}">{{educ.0}}{{") "}} {{educ.3}} {{"("}}{{educ.1}}{{")"}}</option>
+                <option value="{{educ.2}}">{{educ.2}}{{") "}} {{educ.4}} {{"("}}{{educ.3}}{{")"}}</option>
                 <!-- <option value="{{educ.9}}">{{educ.9}}{{") "}} {{educ.10}} {{"("}}{{educ.11}}{{")"}}</option> -->
 
                 {% endfor %}
