@@ -12,16 +12,33 @@
 
 <body>
     {% block content %}
-
+    <div class="nu">
+    <a href="/"><img class="plus" src="{{ url_for('static', filename='IMG/home.svg') }}"
+            title="Home" alt="home"></a>
+    </div>
+<!-- {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+                {{message}}
+            {% endfor %}
+        {% endif %}    
+        {% endwith %} -->
     <section>
+        <h1>&nbspUSUARIOS</h1>
         <div class="seccion-alta">
-            <h1>&nbspUSUARIOS</h1>
+            <div class="nu">
+            <span>BUSCAR</span>
+            <a href="/buscar"><img class="plus" src="{{ url_for('static', filename='IMG/search.svg') }}"
+                    title="BUSCAR" alt="buscar"></a>
+            </div>
             <div class="nu">
             <span>NUEVO USUARIO</span>
             <a href="/agregar"><img class="plus" src="{{ url_for('static', filename='IMG/plus.svg') }}"
                     title="AGREGAR USUARIO" alt="agregar usuario"></a>
             </div>
                 </div>
+        
+        
         <div class="tabla" style="overflow-x:auto; overflow-y:auto;">
             <table>
                 <thead>
@@ -78,6 +95,13 @@
                 </tbody>
             </table>
         </div>
+            
+    <!-- <form action="/buscar" method="POST" style="margin: 30px auto;">
+        <label for="buscar">Dato a buscar:</label>
+        <input type="search" id="buscar" name="nombre">
+        <input type="submit" value="Buscar">
+    </form> -->
+
     </section>
 
     {% endblock %}

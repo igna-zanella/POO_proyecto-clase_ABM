@@ -12,6 +12,10 @@
 
 <body>
     {% block content %}
+    <div class="nu">
+        <a href="/"><img class="plus" src="{{ url_for('static', filename='IMG/home.svg') }}"
+                title="Home" alt="home"></a>
+        </div>
     <div class="contenedor">
         <h1>ALTA DE USUARIOS</h1>
         <form action="" method="POST">
@@ -33,7 +37,7 @@
                 {% endfor %}
             </select>
             <br />
-            <select id="opciones" class="font-wix" name="educacion" required>
+            <select id="opciones" name="educacion" required>
                 <option value="">Educación</option>
 
                 {% for ed in educacionHtml %}

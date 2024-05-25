@@ -1,5 +1,6 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for, flash
 from flask_mysqldb import MySQL
+
 
 
 app = Flask(__name__)
@@ -7,22 +8,16 @@ app.config['MYSQL_HOST'] = 'localhost'
 app.config['MYSQL_USER'] = 'root'
 app.config['MYSQL_PASSWORD'] = ''
 app.config['MYSQL_DB'] = 'flask_db'
+app.secret_key = 'mysecretkey'
 mysql = MySQL(app)
+
 @app.route('/')
 def listar():
-#    curDire = mysql.connection.cursor()
-#    curDire.execute('SELECT * FROM direccion')
-#    dire = curDire.fetchall()
-#
-#    cur = mysql.connection.cursor()
-#    cur.execute('SELECT * FROM usuario ORDER BY apellido')
-#    datos = cur.fetchall()
-    # print(datos)
-
-
     cur = mysql.connection.cursor()
     cur.execute('SELECT usuario.dni, usuario.nombre, usuario.apellido, usuario.direccion, usuario.educacion, direccion.calle, direccion.numero, educacion.educacionMax FROM usuario, direccion, educacion WHERE usuario.direccion = direccion.id AND usuario.educacion = educacion.id_educacion ORDER BY apellido')
     datos = cur.fetchall()
+    flash("Listado de Usuarios")
+    #app.secret_key = 'mysecretkey'
     return render_template('listar.html', datos = datos)
 
 @app.route('/agregar', methods=['POST','GET'])
@@ -93,6 +88,35 @@ def actualizar(dni):
         cur.connection.commit()
 
         return  redirect(url_for('listar'))
+
+@app.route('/buscar', methods=['GET','POST'])
+def buscar():
+    # nombre = request.form['nombre']
+    # cur = mysql.connection.cursor()
+    # cur.execute('SELECT * FROM usuario WHERE nombre LIKE "%%%s%%"' % (nombre))
+    # datos = cur.fetchall()
+    # if datos:
+    #      flash("Resultados de la búsqueda")
+    # else:
+    #      flash("No hay resultados para su búsqueda")
+    # return render_template('listar.html', datos = datos)
+
+    if request.method == 'GET':
+            cur = mysql.connection.cursor()
+            cur.execute('SELECT * FROM usuario')
+            datos = cur.fetchall()
+
+            return render_template('buscar.html', datos= datos)
+    elif request.method == 'POST':
+        nombre = request.form['nombre']
+        cur = mysql.connection.cursor()
+        cur.execute('SELECT * FROM usuario WHERE nombre LIKE "%%%s%%"' % (nombre))
+        datos = cur.fetchall()
+        if datos:
+            flash("Resultados de la búsqueda")
+        else:
+            flash("No hay resultados para su búsqueda")
+        return render_template('listar.html', datos = datos)
 
 if __name__ == '__main__':
     app.run(port=3000,debug=True)
