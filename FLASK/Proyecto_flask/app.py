@@ -110,7 +110,7 @@ def buscar():
     elif request.method == 'POST':
         nombre = request.form['nombre']
         cur = mysql.connection.cursor()
-        cur.execute('SELECT * FROM usuario WHERE nombre LIKE "%%%s%%"' % (nombre))
+        cur.execute('SELECT * FROM usuario WHERE nombre LIKE "%%%s%%" ORDER BY apellido' % (nombre))
         datos = cur.fetchall()
         if datos:
             flash("Resultados de la búsqueda")
