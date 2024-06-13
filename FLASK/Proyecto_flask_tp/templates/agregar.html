@@ -1,0 +1,53 @@
+
+{% extends "base.html" %}
+
+{% block title %}Nueva Venta{% endblock %}
+
+    {% block content %}
+
+    <div class="contenedor">
+        <h1>ALTA DE USUARIOS</h1>
+        <form action="" method="POST">
+            <!-- faltaría agregar la ruta en action "/agregar" -->
+            <input class="input" type="text" name="codigo" placeholder="Código" maxlength="8" required /><br /><br />
+            <input class="input" type="text" name="fecha" placeholder="Fecha" maxlength="20"
+                required /><br /><br />
+            <input class="input" type="text" name="precioTotal" placeholder="Precio" maxlength="20"
+                required /><br /><br />
+            <!-- <input class="input" type="text" id="direccion" name="direccion" placeholder="Dirección" maxlength="5" required><br><br> -->
+            <!-- <label class="sel">Dirección</label> -->
+            <select id="opciones" name="idProducto" required>
+                <option value="">Cámaras</option>
+
+                {% for pro in producto %}
+
+                <option value="{{pro.0}}">{{pro.0}}{{") "}} {{pro.1}} {{pro.2}}</option>
+
+                {% endfor %}
+            </select>
+            <br />
+            <select id="opciones" name="idCliente" required>
+                <option value="">Clientes</option>
+
+                {% for cli in cliente %}
+
+                <option value="{{cli.0}}">
+                    {{cli.1}}{{" "}}{{" "}}{{cli.2}} 
+                </option>
+
+                {% endfor %}
+            </select>
+            <br />
+            <!-- <input class="input" type="text" id="educacion" name="educacion" placeholder="Educación" maxlength="5" required><br><br> -->
+            <button class="btn-agregar" type="submit">AGREGAR</button>
+        </form>
+    </div>
+    <div class="boton-volver">
+        <a class="btn" href="/">VOLVER</a>
+    </div>
+    <script>
+        function myFunction() {
+            alert("Hello\nHow are you?");
+        }
+    </script>
+    {% endblock %}

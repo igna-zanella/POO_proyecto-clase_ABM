@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='/IMG/data-server.png')}}" type="image/x-icon" />
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='/CSS/style.css')}}" />
+    <title>Sistema de Usuarios</title>
+</head>
+<body>
+
+    <header>
+        <nav class="topnav" id="myTopnav">
+            <div class="nu">
+            <a href="/"><img class="plus" src="{{ url_for('static', filename='IMG/home.svg') }}"
+                    title="Home" alt="home"></a>
+            </div>
+            <div class="nu">
+            <a href="/buscar"><img class="plus" src="{{ url_for('static', filename='IMG/search.svg') }}"
+                    title="BUSCAR" alt="buscar"></a>
+            </div>
+            <div class="nu">
+            <a href="/agregar"><img class="plus" src="{{ url_for('static', filename='IMG/plus.svg') }}"
+                    title="AGREGAR USUARIO" alt="agregar usuario"></a>
+            </div>
+        </nav>
+    </header>
+
+
+
+    {% block content %}
+
+    {% endblock %}
+
+    
+    <footer>
+        <div>
+            <h2>Mapa del sitio</h2>
+            <ul>
+                <li><a href="/">Inicio</a></li>
+                <li><a href="/agregar">Agregar Usuario</a></li>
+                <li><a href="/buscar">Buscar</a></li>
+            </ul>
+        </div>
+        <div>
+        
+            <h2>Acercar de Nuestra Empresa</h2>
+            <ul>
+                <li><a href="https://www.google.com" target="_blank">Historia</a></li>
+                <li><a href="https://www.google.com" target="_blank">Clientes</a></li>
+                <li><a href="https://www.google.com" target="_blank">Cobertura</a></li>
+            </ul>
+        </div>
+        <div>
+            <h2>Redes</h2>
+            <ul>
+                <li><a href="https://www.facebook.com" target="_blank">Facebook</a></li>
+                <li><a href="https://www.instagram.com" target="_blank">Instagram</a></li>
+                <li><a href="https://www.linkedin.com" target="_blank">Linkedin</a></li>
+                <li><a href="https://www.youtube.com" target="_blank">Youtube</a></li>
+            </ul>
+                </div>
+    </footer>
+
+</body>
+</html>

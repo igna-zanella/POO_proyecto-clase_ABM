@@ -70,12 +70,12 @@ section {
 }
 
 .hh1 {
-    position: sticky;
-    margin-top: 8.7rem;
+    /* position: sticky; */
     top: 0;
 }
 
 h1 {
+    margin-top: 8.7rem;
     text-align: center;
     padding: 1rem 0;
     font-size: 2rem;
@@ -129,8 +129,8 @@ table, th, td {
 
 table {
     border: 5px solid rgb(53, 52, 54);
-    box-shadow: 3px 3px 8px black;
-    overflow-x:auto;
+    box-shadow: 4px 8px 18px black;
+    /* overflow-x:auto; */
 }
 
 th {
@@ -399,13 +399,10 @@ label{
 /* ------------------- FOOTER ----------------------------------------*/
 footer {
     position: relative;
-    /* top: 200px; */
     height: 250px;
     /* background-image: linear-gradient(to right, hsla(270, 83%, 41%, 1), rgb(203, 40, 255)); */
-    /* background: #CB28FF; */
-    background: #313131;
-    /* background-image: linear-gradient(to right, hsla(270, 83%, 41%, 1), rgb(255, 255, 255)); */
-    /* background-image: linear-gradient(to bottom right, rgb(190, 166, 218), #39363D); */
+    /* background: #313131; */
+    background-image: linear-gradient(to right, rgb(63, 62, 63), rgb(0, 0, 0));
     color: #ffffff;
     /* font-size: 1.5rem; */
     display: grid;
@@ -415,37 +412,32 @@ footer {
     grid-row-gap: 15px;
     margin: 0;
     padding: 0 .6rem;
-  }
-  
-  footer h2 {
+}
+
+footer h2 {
     font-size: 1.5rem;
     padding-bottom: .8rem;
-  }
-  
-  footer li {
+}
+
+footer li {
     padding-bottom: .5rem;
     cursor: pointer;
     list-style: none;
-  }
-  
-  footer li a {
+}
+
+footer li a {
     padding-bottom: .5rem;
     cursor: pointer;
     color: #fff;
     text-decoration: none;
-  }
-  
-  footer img {
-    width: 100%;
+}
+
+footer img {
     max-width: 180px;
+    width: 100%;
     height: auto;
-  }
-  
-  #svg-footer {
-    top: 10px;
-    position: relative;
-  }
-  
-  /* ------------------- FIN FOOTER ----------------------------------------*/
+}
+
+/* ------------------- FIN FOOTER ----------------------------------------*/
 
 

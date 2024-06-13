@@ -1,21 +1,8 @@
-<!DOCTYPE html>
-<html lang="es">
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="{{ url_for('static', filename='/IMG/data-server.png')}}" type="image/x-icon">
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='/CSS/style.css')}}">
-    <title>Lista de Usuarios</title>
-</head>
+{% extends "navbar.html" %}
 
-<body>
     {% block content %}
-    <div class="nu">
-    <a href="/"><img class="plus" src="{{ url_for('static', filename='IMG/home.svg') }}"
-            title="Home" alt="home"></a>
-    </div>
+ 
 <!-- {% with messages = get_flashed_messages() %}
         {% if messages %}
             {% for message in messages %}
@@ -24,8 +11,15 @@
         {% endif %}    
         {% endwith %} -->
     <section>
+    <div class="hh1">    
         <h1>&nbspUSUARIOS</h1>
-        <div class="seccion-alta">
+       </div>
+
+        <!-- <span>BUSCAR</span>
+        <a href="/buscar"><img class="plus" src="{{ url_for('static', filename='IMG/search.svg') }}"
+                title="BUSCAR" alt="buscar"></a>
+ </div> -->
+        <!-- <div class="seccion-alta">
             <div class="nu">
             <span>BUSCAR</span>
             <a href="/buscar"><img class="plus" src="{{ url_for('static', filename='IMG/search.svg') }}"
@@ -36,7 +30,7 @@
             <a href="/agregar"><img class="plus" src="{{ url_for('static', filename='IMG/plus.svg') }}"
                     title="AGREGAR USUARIO" alt="agregar usuario"></a>
             </div>
-                </div>
+                </div> -->
         
         
         <div class="tabla" style="overflow-x:auto; overflow-y:auto;">
@@ -104,7 +98,5 @@
 
     </section>
 
-    {% endblock %}
 
-</body>
-</html>
+    {% endblock %}

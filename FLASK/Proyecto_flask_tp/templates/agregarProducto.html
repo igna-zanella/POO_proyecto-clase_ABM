@@ -1,0 +1,37 @@
+
+{% extends "base.html" %}
+
+{% block title %}Agregar Producto{% endblock %}
+
+    {% block content %}
+
+    <div class="contenedor">
+        <div class="hh1">
+        <h1>ALTA DE PRODUCTO</h1>
+        </div>
+        <form action="" method="POST">
+            
+            <input class="input" type="text" name="id" placeholder="ID" maxlength="8" required /><br /><br />
+            <input class="input" type="text" name="nombre" placeholder="Nombre" maxlength="30"
+                required /><br /><br />
+            <input class="input" type="text" name="marca" placeholder="Marca" maxlength="30"
+                required /><br /><br />
+            <input class="input" type="text" name="descripcion" placeholder="Descripción" maxlength="60"
+                required /><br /><br />
+            <input class="input" type="text" name="precio" placeholder="Precio" maxlength="11"
+                required /><br /><br />
+            <input class="input" type="text" name="cantidad" placeholder="cantidad" maxlength="4"
+                required /><br /><br />
+            
+            <button class="btn-agregar" type="submit" onclick="agregado()">AGREGAR</button>
+        </form>
+    </div>
+    <div class="boton-volver">
+        <a class="btn" href="/">VOLVER</a>
+    </div>
+    <script>
+        function agregado() {
+            alert("Producto agregado correctamente");
+        }
+    </script>
+    {% endblock %}
