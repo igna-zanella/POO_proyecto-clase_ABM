@@ -1,29 +1,29 @@
 
 {% extends "base.html" %}
 
-{% block title %}Inicio{% endblock %}
+{% block title %}Productos{% endblock %}
 
     {% block content %}
 
     <section>
         
-        <h1>&nbspOPERACIONES</h1>
-
+        <h1>&nbspPRODUCTOS</h1>
         <div class="tabla">
             <table>
                 <thead>
                     <tr>
                         <th>#</th>
-                        <th>CÓDIGO</th>
-                        <th>PRODUCTO</th>
+                        <th>ID</th>
+                        <th>NOMBRE</th>
+                        <th>MARCA</th>
+                        <th>DESCRIPCIÓN</th>
                         <th>PRECIO</th>
-                        <th>CLIENTE</th>
-                        <th>FECHA</th>
+                        <th>CANTIDAD</th>
                         <th colspan="2">OPCIONES</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {% for da in datos %}
+                    {% for prod in productos %}
 
                     <tr>
 
@@ -32,24 +32,25 @@
                                 <circle r="45" cx="50" cy="50" fill="red" />
                             </svg>
                         </td>
-                        <td title="código">{{da.0}}</td>
-                        <td title="producto">{{da.6}}</td>
-                        <td title="precio">{{"$"}}{{da.9}}</td>
-                        <td title="cliente">{{da.12}}&nbsp&nbsp{{da.13}}</td>
-                        <td title="fecha">{{da.1}}</td>
-                        <td><a href="/obtener/{{da.0}}"><img class="img-edit"
+                        <td title="ID">{{prod.0}}</td>
+                        <td title="Nombre">{{prod.1}}</td>
+                        <td title="Marca">{{prod.2}}</td>
+                        <td title="Descripción">{{prod.3}}</td>
+                        <td title="Precio">{{prod.4}}</td>
+                        <td title="Cantidad">{{prod.5}}</td>
+                        <td><a href="/obtener/{{prod.0}}"><img class="img-edit"
                                     src="{{ url_for('static', filename='IMG/edit-1-svgrepo-com.svg') }}" title="EDITAR"
                                     alt="editar usuario"></a></td>
                         <td><img class="img-elim" src="{{ url_for('static', filename='IMG/delete-2-svgrepo-com.svg') }}"
-                                onclick="eliminar('{{da.0}}')" title="ELIMINAR" id="{{da.0}}" alt="eliminar usuario">
+                                onclick="eliminar('{{prod.0}}')" title="ELIMINAR" id="{{prod.0}}" alt="eliminar cliente">
                         </td>
 
                         <script>
-                            function eliminar(dni) {
-                                let text = "¿Desea eliminar esta operación de forma permanente?";
+                            function eliminar(id) {
+                                let text = "¿Desea eliminar al producto de forma permanente?";
                                 if (confirm(text) == true) {
-                                    console.log(dni)
-                                    window.location.href = "/eliminar/" + dni;
+                                    console.log(id)
+                                    window.location.href = "/eliminarProducto/" + id;
                                 } else {
                                     text = "";
                                 }

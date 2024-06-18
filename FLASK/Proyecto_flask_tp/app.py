@@ -31,11 +31,11 @@ def listar():
 def agregar():
     if request.method == 'GET':
         cur = mysql.connection.cursor()
-        cur.execute('SELECT * FROM producto')
+        cur.execute('SELECT * FROM producto ORDER BY marca')
         productos = cur.fetchall()
         
         curCli = mysql.connection.cursor()
-        curCli.execute('SELECT * FROM cliente')
+        curCli.execute('SELECT * FROM cliente ORDER BY apellido')
         clientes = curCli.fetchall()
 
         
@@ -44,12 +44,12 @@ def agregar():
         codigo = request.form['codigo']
         # formatted_date = now.strftime('%Y-%m-%d %H:%M:%S')['fecha']
         fecha = request.form['fecha']
-        precioTotal = request.form['precioTotal']
+        # precioTotal = request.form['precioTotal']
         idProducto = request.form['idProducto']
         idCliente = request.form['idCliente']
         
         cur = mysql.connection.cursor()
-        cur.execute('INSERT INTO venta (codigo, fecha, precioTotal, idProducto, idCliente) VALUES (%s, %s, %s, %s, %s)', (codigo, formatted_date, precioTotal, idProducto, idCliente))
+        cur.execute('INSERT INTO venta (codigo, fecha, idProducto, idCliente) VALUES (%s, %s, %s, %s)', (codigo, fecha, idProducto, idCliente))
         cur.connection.commit()
         return  redirect(url_for('listar'))
     
@@ -67,7 +67,7 @@ def eliminar(codigo):
 @app.route('/listarProducto')
 def listarProducto():
     curp = mysql.connection.cursor()
-    curp.execute('SELECT * FROM producto ORDER BY id')
+    curp.execute('SELECT * FROM producto ORDER BY marca')
     productos = curp.fetchall()
     # flash("Listado de Usuarios")
     #app.secret_key = 'mysecretkey'
@@ -100,6 +100,26 @@ def eliminarProducto(id):
         cur.execute('DELETE FROM producto WHERE id = {0}'.format(id))
         cur.connection.commit()
         return redirect(url_for('listarProducto'))
+
+@app.route('/buscarProducto', methods=['GET','POST'])
+def buscarProducto():
+    if request.method == 'GET':
+            cur = mysql.connection.cursor()
+            cur.execute('SELECT * FROM producto')
+            productos = cur.fetchall()
+
+            return render_template('buscarProducto.html', productos = productos)
+    elif request.method == 'POST':
+        marca = request.form['marca']
+        cur = mysql.connection.cursor()
+        cur.execute('SELECT * FROM producto WHERE marca LIKE "%%%s%%"' % (marca))
+        productos = cur.fetchall()
+        if productos:
+            flash("Resultados de la búsqueda")
+        else:
+            flash("No hay resultados para su búsqueda")
+        return render_template('listarProducto.html', productos = productos)
+
 
 # ------------------------ FIN PRODUCTOS -----------------------------------
 # ------------------------ CLIENTE -----------------------------------------
@@ -145,24 +165,22 @@ def eliminarCliente(dni):
 
 @app.route('/obtener/<id>')
 def obtener(id):
-        curEducacion= mysql.connection.cursor()
-        # curEducacion.execute('SELECT * FROM direccion')
-        curEducacion.execute('SELECT usuario.dni, usuario.educacion, educacion.id_educacion, educacion.educacionMax, educacion.titulo FROM usuario, educacion WHERE dni = %s' % (id))
-        educacion= curEducacion.fetchall()
+        curProducto= mysql.connection.cursor()
+        curProducto.execute('SELECT * FROM producto')
+        producto = curProducto.fetchall()
         
-        curDireccion= mysql.connection.cursor()
-        # cuDireccion.execute('SELECT * FROM direccion')
-        curDireccion.execute('SELECT * FROM direccion')
-        direccion= curDireccion.fetchall()
+        curCliente= mysql.connection.cursor()
+        curCliente.execute('SELECT * FROM cliente')
+        cliente = curCliente.fetchall()
         
         cur = mysql.connection.cursor()
         # cur.execute('SELECT * FROM usuario WHERE dni = %s' % (id))
-        cur.execute('SELECT * FROM usuario, direccion WHERE dni = %s' % (id))
-        usuario = cur.fetchall()
+        cur.execute('SELECT * FROM venta, producto direccion WHERE codigo = %s' % (id))
+        venta = cur.fetchall()
 
         # usuario.dni[0], usuario.nombre[1], usuario.apellido[2], usuario.direccion[3], usuario.educacion[4], direccion.id[5], direccion.calle[6], direccion.numero[7], direccion.codigoP[8] 
         
-        return render_template('editar.html', usuariohtml = usuario[0], dire = direccion, Cli = educacion, usuDire = usuario, usuEdu = educacion)
+        return render_template('editar.html', ventahtml = venta[0], clientes = cliente, productos = producto, venCli = venta, venProd = producto)
 
 @app.route('/actualizar/<dni>', methods=['POST'])
 def actualizar(dni):
@@ -195,20 +213,20 @@ def buscar():
 
     if request.method == 'GET':
             cur = mysql.connection.cursor()
-            cur.execute('SELECT * FROM usuario')
-            datos = cur.fetchall()
+            cur.execute('SELECT * FROM cliente')
+            clientes = cur.fetchall()
 
-            return render_template('buscar.html', datos= datos)
+            return render_template('buscar.html', clientes = clientes)
     elif request.method == 'POST':
-        nombre = request.form['nombre']
+        apellido = request.form['apellido']
         cur = mysql.connection.cursor()
-        cur.execute('SELECT * FROM usuario WHERE nombre LIKE "%%%s%%" ORDER BY apellido' % (nombre))
-        datos = cur.fetchall()
-        if datos:
+        cur.execute('SELECT * FROM cliente WHERE apellido LIKE "%%%s%%"' % (apellido))
+        clientes = cur.fetchall()
+        if clientes:
             flash("Resultados de la búsqueda")
         else:
             flash("No hay resultados para su búsqueda")
-        return render_template('listar.html', datos = datos)
+        return render_template('listarCliente.html', clientes = clientes)
 
 if __name__ == '__main__':
     app.run(port=3000,debug=True)

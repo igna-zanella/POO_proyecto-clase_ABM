@@ -8,81 +8,42 @@
 </head>
 <body>
     <h1>Bienvenidos</h1>
-    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Commodi fugit ducimus doloribus molestiae optio delectus expedita, cum ab fuga impedit non consequatur recusandae aperiam porro, omnis officia ipsum? Adipisci, fuga?</p>
-    <div style="background-color: blueviolet; color:aquamarine; height:200px">
-        <h2>jjjjjjjj</h2>
-        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolorum, ipsum. Quos quia officiis sit eveniet adipisci delectus dolores nemo, deleniti aperiam ab in asperiores perspiciatis numquam, rerum molestiae quaerat libero!</p>
+    <div class="cards">
+        <div class="card">
+            <img src="../static/IMG/bin.png" alt="" width="100px" height="auto">
+            <div class="content">
+                <h2>TITULO</h2>
+                <P>Lorem ipsum ssssssssssssssssssssssssssss.</P>
+                <P>Lorem ipsum .</P>
+                <P>Lorem ipsum .</P>
+                <P>Lorem ipsum .</P>
+                <br>
+                <h3>Precio 12</h3>
+                <h3>cantidad 4</h3>
+            </div>
+            <div class="pie">
+                <button>Submit</button>
+                <button>Submit</button>
+            </div>
+            </div>
+        <div class="card">
+            <img src="../static/IMG/bin.png" alt="" width="100px" height="auto">
+            <div class="content">
+                <h2>TITULO</h2>
+                <P>Lorem ipsum ssssssssssssssssssssssssssss.</P>
+                <P>Lorem ipsum .</P>
+                <P>Lorem ipsum .</P>
+                <P>Lorem ipsum .</P>
+                <br>
+                <h3>Precio 12</h3>
+                <h3>cantidad 4</h3>
+            </div>
+            <div class="pie">
+                <button>Submit</button>
+                <button>Submit</button>
+            </div>
+        </div>
     </div>
-    <table>
-        <thead>
-            <tr>
-                <th colspan="2">DNI</th>
-                <th>NOMBRE</th>
-                <th>APELLIDO</th>
-                <th>DIRECCIÓN</th>
-                <th>EDUCACIÓN</th>
-                <th colspan="3">OPCIONES</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-            <td title="DNI">{{da.0}}</td>
-            <td title="Nombre">{{da.1}}</td>
-            <td title="Apellido">{{da.2}}</td>
-            <td title="Dirección">{{da.3}}</td>
-            <td title="Educación">{{da.4}}</td>
-            <td title="Educación">{{da.4}}</td>
-            <td title="Educación">{{da.4}}</td>
-            <td><a class="btn-editar" href="/obtener/{{da.0}}">EDITAR</a></td>
 
-            <!-- <td><a href="/eliminar/{{da.0}}">Eliminar ❌</a></td> -->
-            <!-- <td><button class="btn-eliminar" onclick="myFunction('{{da.0}}')" title="¡No se puede deshacer!">ELIMINAR</button></td> -->
-            <td><input type="submit" class="btn-eliminar" onclick="eliminar('{{da.0}}')" title="¡No se puede deshacer!" id="{{da.0}}" value="ELIMINAR"></td>
-        </tr>
-            <tr>
-            <td title="DNI">{{da.0}}</td>
-            <td title="Nombre">{{da.1}}</td>
-            <td title="Apellido">{{da.2}}</td>
-            <td title="Dirección">{{da.3}}</td>
-            <td title="Educación">{{da.4}}</td>
-            <td title="Educación">{{da.4}}</td>
-            <td title="Educación">{{da.4}}</td>
-            <td><a class="btn-editar" href="/obtener/{{da.0}}">EDITAR</a></td>
-
-            <!-- <td><a href="/eliminar/{{da.0}}">Eliminar ❌</a></td> -->
-            <!-- <td><button class="btn-eliminar" onclick="myFunction('{{da.0}}')" title="¡No se puede deshacer!">ELIMINAR</button></td> -->
-            <td><input type="submit" class="btn-eliminar" onclick="eliminar('{{da.0}}')" title="¡No se puede deshacer!" id="{{da.0}}" value="ELIMINAR"></td>
-        </tr>
-            <tr>
-            <td title="DNI">{{da.0}}</td>
-            <td title="Nombre">{{da.1}}</td>
-            <td title="Apellido">{{da.2}}</td>
-            <td title="Dirección">{{da.3}}</td>
-            <td title="Educación">{{da.4}}</td>
-            <td title="Educación">{{da.4}}</td>
-            <td title="Educación">{{da.4}}</td>
-            <td><a class="btn-editar" href="/obtener/{{da.0}}">EDITAR</a></td>
-
-            <!-- <td><a href="/eliminar/{{da.0}}">Eliminar ❌</a></td> -->
-            <!-- <td><button class="btn-eliminar" onclick="myFunction('{{da.0}}')" title="¡No se puede deshacer!">ELIMINAR</button></td> -->
-            <td><input type="submit" class="btn-eliminar" onclick="eliminar('{{da.0}}')" title="¡No se puede deshacer!" id="{{da.0}}" value="ELIMINAR"></td>
-        </tr>
-            <tr>
-            <td title="DNI">{{da.0}}</td>
-            <td title="Nombre">{{da.1}}</td>
-            <td title="Apellido">{{da.2}}</td>
-            <td title="Dirección">{{da.3}}</td>
-            <td title="Educación">{{da.4}}</td>
-            <td title="Educación">{{da.4}}</td>
-            <td title="Educación">{{da.4}}</td>
-            <td><a class="btn-editar" href="/obtener/{{da.0}}">EDITAR</a></td>
-
-            <!-- <td><a href="/eliminar/{{da.0}}">Eliminar ❌</a></td> -->
-            <!-- <td><button class="btn-eliminar" onclick="myFunction('{{da.0}}')" title="¡No se puede deshacer!">ELIMINAR</button></td> -->
-            <td><input type="submit" class="btn-eliminar" onclick="eliminar('{{da.0}}')" title="¡No se puede deshacer!" id="{{da.0}}" value="ELIMINAR"></td>
-        </tr>
-
-        </tbody>
-    </table>
 </body>
 </html>

@@ -13,6 +13,14 @@ FOREIGN KEY(idProducto) REFERENCES producto(id),
 FOREIGN KEY(idCliente) REFERENCES cliente(dni));
 
 /*
+ALTER TABLE venta
+MODIFY fecha VARCHAR (255);
+SET SQL_SAFE_UPDATES = 0;
+UPDATE venta
+SET fecha = date_format(fecha,"%b/%d/%Y");
+*/
+
+/*
 ALTER TABLE ventas ADD FOREIGN KEY(idProducto) REFERENCES producto(id);
 ALTER TABLE ventas ADD FOREIGN KEY(idCliente) REFERENCES clientes(dni);
 */

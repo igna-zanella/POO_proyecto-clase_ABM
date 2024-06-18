@@ -4,33 +4,18 @@
 {% block title %}Buscar{% endblock %}
 
     {% block content %}
-    <header>
-        <nav class="topnav" id="myTopnav">
-            <div class="nu">
-            <a href="/"><img class="plus" src="{{ url_for('static', filename='IMG/home.svg') }}"
-                    title="Home" alt="home"></a>
-            </div>
-            <div class="nu">
-            <a href="/buscar"><img class="plus" src="{{ url_for('static', filename='IMG/search.svg') }}"
-                    title="BUSCAR" alt="buscar"></a>
-            </div>
-            <div class="nu">
-            <a href="/agregar"><img class="plus" src="{{ url_for('static', filename='IMG/plus.svg') }}"
-                    title="AGREGAR USUARIO" alt="agregar usuario"></a>
-            </div>
-          </nav>
-          </header>
+
     
-<h1>BÚSQUEDA</h1>
+<h1>BÚSQUEDA DE CLIENTES</h1>
 
     <form action="/buscar" method="POST" style="margin: 30px auto;">
-      <label for="buscar">Ingrese su búsqueda</label>
-      <input type="search" id="buscar" name="nombre">
+      <label for="buscar">Ingrese apellido</label>
+      <input type="search" id="buscar" name="apellido">
       <button class="btn-agregar" type="submit">BUSCAR</button>
       <!-- <input type="submit" value="Buscar"> -->
     </form>
 
-    <div class="boton-volver">
+    <!-- <div class="boton-volver">
         <a class="btn" href="/">VOLVER</a>
-    </div>
+    </div> -->
     {% endblock %}
