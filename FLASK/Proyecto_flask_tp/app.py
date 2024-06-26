@@ -20,7 +20,7 @@ mysql = MySQL(app)
 @app.route('/')
 def listar():
     cur = mysql.connection.cursor()
-    cur.execute('SELECT venta.codigo, venta.fecha, venta.precioTotal, venta.idProducto, venta.idCliente, producto.id, producto.nombre, producto.marca, producto.descripcion, producto.precio, producto.cantidad, cliente.dni, cliente.nombre, cliente.apellido, cliente.contacto FROM venta, producto, cliente WHERE venta.idProducto = producto.id AND venta.idCliente = cliente.dni')
+    cur.execute('SELECT venta.codigo, venta.fecha, venta.precioTotal, venta.idProducto, venta.idCliente, producto.id, producto.nombre, producto.marca, producto.descripcion, producto.precio, producto.cantidad, cliente.dni, cliente.nombre, cliente.apellido, cliente.contacto FROM venta, producto, cliente WHERE venta.idProducto = producto.id AND venta.idCliente = cliente.dni ORDER BY venta.fecha')
     datos = cur.fetchall()
     # flash("Listado de Operaciones")
     #app.secret_key = 'mysecretkey'
@@ -88,9 +88,10 @@ def agregarProducto():
         descripcion = request.form['descripcion']
         precio = request.form['precio']
         cantidad = request.form['cantidad']
+        img = request.form['img']
         
         cur = mysql.connection.cursor()
-        cur.execute('INSERT INTO producto (id, nombre, marca, descripcion, precio, cantidad) VALUES (%s, %s, %s, %s, %s, %s)', (id, nombre, marca, descripcion, precio, cantidad))
+        cur.execute('INSERT INTO producto (id, nombre, marca, descripcion, precio, cantidad, img) VALUES (%s, %s, %s, %s, %s, %s, %s)', (id, nombre, marca, descripcion, precio, cantidad, img))
         cur.connection.commit()
         return redirect(url_for('listarProducto'))
     
@@ -119,6 +120,37 @@ def buscarProducto():
         else:
             flash("No hay resultados para su búsqueda")
         return render_template('listarProducto.html', productos = productos)
+    
+
+@app.route('/obtenerProducto/<id>')
+def obtenerProducto(id):
+        cur= mysql.connection.cursor()
+        cur.execute('SELECT * FROM producto WHERE id = %s' % (id))
+        producto = cur.fetchall()
+        
+        return render_template('editarProducto.html', productos = producto[0])
+
+@app.route('/actualizarProducto/<id>', methods=['POST', 'GET'])
+def actualizarProducto(id):
+    if request.method == 'POST':
+        nombre = request.form['nombre']
+        marca = request.form['marca']
+        descripcion = request.form['descripcion']
+        precio = request.form['precio']
+        cantidad = request.form['cantidad']
+        img = request.form['img']
+        
+        cur = mysql.connection.cursor()
+        cur.execute('''UPDATE producto SET nombre = %s, 
+                    marca = %s, 
+                    descripcion = %s, 
+                    precio = %s,
+                    cantidad = %s,
+                    img = %s WHERE id = %s''', (nombre, marca, descripcion, precio, cantidad, img, id))
+        cur.connection.commit()
+
+        return  redirect(url_for('listarProducto'))
+
 
 
 # ------------------------ FIN PRODUCTOS -----------------------------------
@@ -159,6 +191,58 @@ def eliminarCliente(dni):
         cur.execute('DELETE FROM cliente WHERE dni = {0}'.format(dni))
         cur.connection.commit()
         return redirect(url_for('listarCliente'))
+
+@app.route('/buscar', methods=['GET','POST'])
+def buscar():
+    # nombre = request.form['nombre']
+    # cur = mysql.connection.cursor()
+    # cur.execute('SELECT * FROM usuario WHERE nombre LIKE "%%%s%%"' % (nombre))
+    # datos = cur.fetchall()
+    # if datos:
+    #      flash("Resultados de la búsqueda")
+    # else:
+    #      flash("No hay resultados para su búsqueda")
+    # return render_template('listar.html', datos = datos)
+
+    if request.method == 'GET':
+            cur = mysql.connection.cursor()
+            cur.execute('SELECT * FROM cliente')
+            clientes = cur.fetchall()
+
+            return render_template('buscar.html', clientes = clientes)
+    elif request.method == 'POST':
+        apellido = request.form['apellido']
+        cur = mysql.connection.cursor()
+        cur.execute('SELECT * FROM cliente WHERE apellido LIKE "%%%s%%"' % (apellido))
+        clientes = cur.fetchall()
+        if clientes:
+            flash("Resultados de la búsqueda")
+        else:
+            flash("No hay resultados para su búsqueda")
+        return render_template('listarCliente.html', clientes = clientes)
+
+@app.route('/obtenerCliente/<dni>')
+def obtenerCliente(dni):
+        curCliente= mysql.connection.cursor()
+        curCliente.execute('SELECT * FROM cliente WHERE dni = %s' % (dni))
+        cliente = curCliente.fetchall()
+        
+        return render_template('editarCliente.html', clientes = cliente[0])
+
+@app.route('/actualizarCliente/<dni>', methods=['POST'])
+def actualizarCliente(dni):
+    if request.method == 'POST':
+        nombre = request.form['nombre']
+        apellido = request.form['apellido']
+        contacto = request.form['contacto']
+        
+        cur = mysql.connection.cursor()
+        cur.execute('''UPDATE cliente SET nombre = %s, 
+                    apellido = %s, 
+                    contacto = %s WHERE dni = %s''', (nombre, apellido, contacto, dni))
+        cur.connection.commit()
+
+        return  redirect(url_for('listarCliente'))
     
 # ------------------------ FIN CLIENTE -------------------------------------
 
@@ -199,34 +283,7 @@ def actualizar(dni):
 
         return  redirect(url_for('listar'))
 
-@app.route('/buscar', methods=['GET','POST'])
-def buscar():
-    # nombre = request.form['nombre']
-    # cur = mysql.connection.cursor()
-    # cur.execute('SELECT * FROM usuario WHERE nombre LIKE "%%%s%%"' % (nombre))
-    # datos = cur.fetchall()
-    # if datos:
-    #      flash("Resultados de la búsqueda")
-    # else:
-    #      flash("No hay resultados para su búsqueda")
-    # return render_template('listar.html', datos = datos)
 
-    if request.method == 'GET':
-            cur = mysql.connection.cursor()
-            cur.execute('SELECT * FROM cliente')
-            clientes = cur.fetchall()
-
-            return render_template('buscar.html', clientes = clientes)
-    elif request.method == 'POST':
-        apellido = request.form['apellido']
-        cur = mysql.connection.cursor()
-        cur.execute('SELECT * FROM cliente WHERE apellido LIKE "%%%s%%"' % (apellido))
-        clientes = cur.fetchall()
-        if clientes:
-            flash("Resultados de la búsqueda")
-        else:
-            flash("No hay resultados para su búsqueda")
-        return render_template('listarCliente.html', clientes = clientes)
 
 if __name__ == '__main__':
     app.run(port=3000,debug=True)

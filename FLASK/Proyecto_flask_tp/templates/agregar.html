@@ -10,7 +10,7 @@
         <form action="" method="POST">
             <!-- faltaría agregar la ruta en action "/agregar" -->
             <input class="input" type="text" name="codigo" placeholder="Código" maxlength="8" required /><br /><br />
-            <input class="input" type="date" name="fecha" placeholder="Fecha" required /><br /><br />
+            <input class="input" type="date" name="fecha" id="dateid" required /><br /><br />
             <!-- <input class="input" type="text" name="precioTotal" placeholder="Precio" maxlength="20"
                 /><br /><br /> -->
             <select id="opciones" name="idProducto" required>
@@ -54,9 +54,21 @@
     <!-- <div class="boton-volver">
         <a class="btn" href="/">VOLVER</a>
     </div> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script>
         function myFunction() {
             alert("Hello\nHow are you?");
         }
+        
+            var date = new Date();
+
+var day = ("0" + date.getDate()).slice(-2);
+var month = ("0" + (date.getMonth() + 1)).slice(-2);
+
+var today = date.getFullYear() + "-" + (month) + "-" + (day);
+
+$('#dateid').val(today);
+    
+
     </script>
     {% endblock %}

@@ -258,6 +258,9 @@ label{
     font-weight: 500;
 }
 
+.texto-area {
+    height: 5.125rem;
+}
 
 /* ----------------------------------- FIN FORMULARIO ---------------------------- */
 
@@ -443,6 +446,8 @@ label{
     padding: .8rem;
     flex-grow: 1;
     flex-shrink: 1;
+    display: flex;
+    flex-direction: column;
 }
 
 .card .content p {
@@ -451,8 +456,18 @@ label{
     text-align: left;
 }
 
+.card .content .subtitulo {
+    border-bottom: 2px solid #000;
+}
+
 .card .content > .precio-stock{
     text-align: left;
+    display: flex;
+    align-items: baseline;
+    flex-direction: column;
+    flex-shrink: 1;
+    flex-grow: 1;
+    justify-content: end;
 }
 
 .card > img {
@@ -474,6 +489,15 @@ label{
     border-bottom-left-radius: .3125rem;
 }
 
+.precio-stock h4 {
+    margin: 15px 5px;
+    padding: 8px;
+    background-color: #2fa700;
+    width: 70%;
+    border-radius: 15px;
+    text-align: center;
+    color: #fff;
+}
 
 
 /* ----------------------------------- FIN PRODUCTOS ----------------------------- */
@@ -482,19 +506,20 @@ label{
 footer {
     position: relative;
     margin-top: 3.25rem;
-    height: 250px;
-    /* background-image: linear-gradient(to right, hsla(270, 83%, 41%, 1), rgb(203, 40, 255)); */
-    /* background: #313131; */
+    padding: 2rem .6rem;
+    height: 350px;
     background-image: linear-gradient(to right, rgb(63, 62, 63), rgb(0, 0, 0));
     color: #ffffff;
-    /* font-size: 1.5rem; */
     display: grid;
     place-items: center;
     grid-template-columns: repeat(3, 1fr);
     grid-column-gap: 15px;
     grid-row-gap: 15px;
+    align-items: start;
     /* margin: 0; */
-    padding: 0 .6rem;
+    /* font-size: 1.5rem; */
+    /* background-image: linear-gradient(to right, hsla(270, 83%, 41%, 1), rgb(203, 40, 255)); */
+    /* background: #313131; */
 }
 
 footer h2 {

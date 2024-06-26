@@ -1,0 +1,51 @@
+
+{% extends "base.html" %}
+
+{% block title %}ACTUALIZAR PRODUCTOS{% endblock %}
+
+    {% block content %}
+
+    <div class="contenedor">
+        <h1>ACTUALIZACIÓN DE DATOS</h1>
+
+        <form action="/actualizarProducto/{{productos.0}}" method="POST" style="display: block;">
+            <label for="id">id</label>
+            <input class="input" type="text" name="id" value="{{productos.0}}" placeholder="id"
+                maxlength="8" required readonly><br><br>
+            <label for="nombre">Modelo</label>
+            <input class="input" type="text" name="nombre" value="{{productos.1}}" placeholder="Modelo"
+                maxlength="20" required><br><br>
+            <label for="marca">Marca</label>
+            <input class="input" type="text" name="marca" value="{{productos.2}}" placeholder="marca"
+                maxlength="20" required><br><br>
+            <label for="descripcion">Descripción</label>
+            <textarea class="input texto-area" name="descripcion" value="{{productos.3}}" placeholder="Descripción" rows="10" cols="50"
+                maxlength="400" required>{{productos.3}}</textarea><br><br>
+            <label for="precio">Precio (U$S)</label>
+            <input class="input" type="text" name="precio" value="{{productos.4}}" placeholder="precio"
+                maxlength="20" required><br><br>
+            <label for="cantidad">Cantidad</label>
+            <input class="input" type="number" name="cantidad" value="{{productos.5}}" placeholder="cantidad"
+                min="1" max="99" required><br><br>
+            <label for="img">Código Imagen</label>
+            {% if productos.6 == "" %}
+                <input class="input" type="file" name="img" value="nodisponible" placeholder="imagen"
+                maxlength="60"><br><br>
+            {% else %}
+                <input class="input" type="file" name="img" value="{{productos.6}}" placeholder="imagen"
+                maxlength="60"><br><br>
+            {% endif %}
+                        
+            <button class="btn-agregar" type="submit" onclick="mensajeActualizar()">ACTUALIZAR</button>
+        </form>
+        <script>
+            function mensajeActualizar() {
+                alert("Datos actualizados")
+            }
+        </script>
+    </div>
+    <!-- <div class="boton-volver">
+        <a class="btn" href="/">VOLVER</a>
+    </div> -->
+    
+    {% endblock %}

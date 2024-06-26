@@ -35,7 +35,7 @@
                         <td title="Nombre">{{cli.1}}</td>
                         <td title="Apellido">{{cli.2}}</td>
                         <td title="Contacto">{{cli.3}}</td>
-                        <td><a href="/obtener/{{cli.0}}"><img class="img-edit"
+                        <td><a href="/obtenerCliente/{{cli.0}}"><img class="img-edit"
                                     src="{{ url_for('static', filename='IMG/edit-1-svgrepo-com.svg') }}" title="EDITAR"
                                     alt="editar usuario"></a></td>
                         <td><img class="img-elim" src="{{ url_for('static', filename='IMG/delete-2-svgrepo-com.svg') }}"
@@ -58,8 +58,10 @@
                     </tr>
                 </tbody>
             </table>
+
         </div>
-            
+
+        {% include 'bu.html' %}        
     </section>
 
     {% endblock %}
