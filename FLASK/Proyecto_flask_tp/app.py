@@ -11,7 +11,7 @@ app = Flask(__name__)
 app.config['MYSQL_HOST'] = 'localhost'
 app.config['MYSQL_USER'] = 'root'
 app.config['MYSQL_PASSWORD'] = ''
-app.config['MYSQL_DB'] = 'tp'
+app.config['MYSQL_DB'] = 'v02'
 app.secret_key = 'mysecretkey'
 mysql = MySQL(app)
 
@@ -48,9 +48,18 @@ def agregar():
         idProducto = request.form['idProducto']
         idCliente = request.form['idCliente']
         
+        # cur = mysql.connection.cursor()
+        # cur.execute('INSERT INTO venta, producto (codigo.venta, fecha.venta, idProducto.venta, idCliente.venta, sum(cantidad.producto - 1)) VALUES (%s, %s, %s, %s, %s)', (codigo, fecha, idProducto, idCliente, cantidad))
+        # cur.connection.commit()
         cur = mysql.connection.cursor()
         cur.execute('INSERT INTO venta (codigo, fecha, idProducto, idCliente) VALUES (%s, %s, %s, %s)', (codigo, fecha, idProducto, idCliente))
         cur.connection.commit()
+        
+        curCant = mysql.connection.cursor()
+        # curCant.execute('SELECT SUM(cantidad-1) AS stock FROM producto WHERE id=1 VALUES (%s)', (stock))
+        # curCant.execute('SELECT SUM(cantidad-1) AS stock FROM producto WHERE id like "A1%" ')
+        curCant.execute('SELECT * FROM producto,venta; UPDATE producto SET cantidad = cantidad + 1 WHERE id = idProducto')
+        curCant.connection.commit()
         return  redirect(url_for('listar'))
     
 
@@ -138,16 +147,28 @@ def actualizarProducto(id):
         descripcion = request.form['descripcion']
         precio = request.form['precio']
         cantidad = request.form['cantidad']
-        img = request.form['img']
         
-        cur = mysql.connection.cursor()
-        cur.execute('''UPDATE producto SET nombre = %s, 
-                    marca = %s, 
-                    descripcion = %s, 
-                    precio = %s,
-                    cantidad = %s,
-                    img = %s WHERE id = %s''', (nombre, marca, descripcion, precio, cantidad, img, id))
-        cur.connection.commit()
+        if(request.form['img']):
+            img = request.form['img']
+            
+            cur = mysql.connection.cursor()
+            cur.execute('''UPDATE producto SET nombre = %s, 
+                        marca = %s, 
+                        descripcion = %s, 
+                        precio = %s,
+                        cantidad = %s,
+                        img = %s WHERE id = %s''', (nombre, marca, descripcion, precio, cantidad, img, id))
+            cur.connection.commit()
+        else:
+            img  ='nodisponible.png'
+            cur = mysql.connection.cursor()
+            cur.execute('''UPDATE producto SET nombre = %s, 
+                        marca = %s, 
+                        descripcion = %s, 
+                        precio = %s,
+                        cantidad = %s,
+                        img = %s WHERE id = %s''', (nombre, marca, descripcion, precio, cantidad, img, id))
+            cur.connection.commit()
 
         return  redirect(url_for('listarProducto'))
 
@@ -192,8 +213,8 @@ def eliminarCliente(dni):
         cur.connection.commit()
         return redirect(url_for('listarCliente'))
 
-@app.route('/buscar', methods=['GET','POST'])
-def buscar():
+@app.route('/buscarCliente', methods=['GET','POST'])
+def buscarCliente():
     # nombre = request.form['nombre']
     # cur = mysql.connection.cursor()
     # cur.execute('SELECT * FROM usuario WHERE nombre LIKE "%%%s%%"' % (nombre))
@@ -283,6 +304,33 @@ def actualizar(dni):
 
         return  redirect(url_for('listar'))
 
+
+
+@app.route('/buscar', methods=['GET','POST'])
+def buscar():
+    
+    if request.method == 'GET':
+            cur = mysql.connection.cursor()
+            cur.execute('SELECT venta.codigo, venta.fecha, venta.precioTotal, venta.idProducto, venta.idCliente, producto.id, producto.nombre, producto.marca, producto.descripcion, producto.precio, producto.cantidad, cliente.dni, cliente.nombre, cliente.apellido, cliente.contacto FROM venta, producto, cliente WHERE venta.idProducto = producto.id AND venta.idCliente = cliente.dni ORDER BY venta.fecha')
+            datos = cur.fetchall()
+            #venta.codigo[0], venta.fecha[1], venta.precioTotal[2], venta.idProducto[3], venta.idCliente[4], producto.id[5], producto.nombre[6], producto.marca[7], producto.descripcion[8], producto.precio[9], producto.cantidad[10], cliente.dni[11], cliente.nombre[12], cliente.apellido[13], cliente.contacto[14]
+
+            return render_template('buscar.html', datos = datos)
+    elif request.method == 'POST':
+        apellido = request.form['apellido']
+        
+        cur = mysql.connection.cursor()
+        cur.execute('SELECT venta.codigo, venta.fecha, venta.precioTotal, venta.idProducto, venta.idCliente, producto.id, producto.nombre, producto.marca, producto.descripcion, producto.precio, producto.cantidad, cliente.dni, cliente.nombre, cliente.apellido, cliente.contacto FROM venta, producto, cliente WHERE  apellido LIKE "%%%s%%"' % (apellido))
+        datos = cur.fetchall()
+        
+        curCli = mysql.connection.cursor()
+        curCli.execute('SELECT * FROM cliente WHERE apellido LIKE "%%%s%%"' % (apellido))
+        clientes = curCli.fetchall()
+        if datos:
+            flash("Resultados de la búsqueda")
+        else:
+            flash("No hay resultados para su búsqueda")
+        return render_template('listarBusqueda.html', datos = datos, clientes = clientes)
 
 
 if __name__ == '__main__':

@@ -13,7 +13,11 @@
         {% for prod in productos %}
             <div class="card">
                 <!-- <img src="../static/IMG/nodisponible.png" alt="" width="100px" height="auto"> -->
+                {% if prod.6 == '' %}
+                <img src="../static/IMG_PRODUCTOS/nodisponible.png" alt="Cámara Reflex" width="100px" height="auto">
+                {% else %}
                 <img src="../static/IMG_PRODUCTOS/{{prod.6}}" alt="Cámara Reflex" width="100px" height="auto">
+                {% endif %}
                 <div class="content">
                     <h2>{{prod.2}}</h2>
                     <h3 class="subtitulo">{{prod.1}}</h3>

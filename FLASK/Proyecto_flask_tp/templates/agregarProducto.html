@@ -33,8 +33,11 @@
             <input class="input" type="text" name="precio" placeholder="Precio" maxlength="11"
                 required /><br /><br />
             <input class="input" type="number" name="cantidad" placeholder="Cantidad" min="1" max="99"
-                required /><br /><br />
-            <input class="input" type="file" name="img" value="nodisponible" placeholder="imagen" maxlength="60"
+                /><br /><br />
+            <div class="btn-subir-img">
+                <label for="img" class="subir-img">IMAGEN 📷</label>
+            </div>
+            <input type="file" id="img" name="img" accept="image/*"
             /><br /><br />
             
             <button class="btn-agregar" type="submit" onclick="agregado()">AGREGAR</button>

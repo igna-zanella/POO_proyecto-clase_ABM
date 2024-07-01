@@ -255,11 +255,28 @@ label{
     padding: .3rem;
     color: #fff; 
     font-family: inherit;
-    font-weight: 500;
+    /* font-weight: 500; */
+    font-size: .9rem;
+    font-weight: 800;
 }
 
 .texto-area {
     height: 5.125rem;
+}
+
+input[type="file"] {
+    display: none;
+}
+
+.subir-img {
+    background-color: #386cbb;
+    color: white;
+    width: 70%;
+    text-align: center;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
 }
 
 /* ----------------------------------- FIN FORMULARIO ---------------------------- */
@@ -405,6 +422,13 @@ label{
 
 .boton-volver a {
     text-decoration: none;
+}
+
+.btn-subir-img {
+    margin: auto;
+    font-family: "Wix Madefor Display", sans-serif;
+    font-size: .9rem;
+    font-weight: 800;
 }
 
 /* ----------------------------------- FIN BOTONES ------------------------------- */
